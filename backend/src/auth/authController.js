@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const User = require("./authModel");
 const { OAuth2Client } = require("google-auth-library");
 
+// controller function to register a user
 const register = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -27,6 +28,7 @@ const register = async (req, res) => {
   }
 };
 
+// controller function to login a user
 const logIn = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -36,6 +38,7 @@ const logIn = async (req, res) => {
     }
 
     const user = await User.findOne({ email });
+
     if (!user) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
@@ -67,6 +70,7 @@ const logIn = async (req, res) => {
   }
 };
 
+// controller function to google sign in a user
 const googleSignin = async (req, res) => {
   res.header("Access-Control-Allow-Origin", "http://localhost:5173");
   res.header("Referrer-Policy", "no-referrer-when-downgrade");
@@ -87,6 +91,23 @@ const googleSignin = async (req, res) => {
 
   res.json({ url: authorizeUrl });
 };
+
+// controller function to get job by email
+// const getJobByEmail = async (req, res) => {
+//   try {
+//     const { email } = req.params; // get the email of the user
+//     const user = await User.find({ email }).sort({ createdAt: -1 });
+
+//     if (!user) {
+//       return res.status(401).json({ message: "Invalid email or password" });
+//     }
+
+//     res.status(201).json({ message: "User found by email", user });
+//   } catch (error) {
+//     console.log("Error :", error);
+//     res.status(500).json("Failed to get user by email");
+//   }
+// };
 
 module.exports = {
   register,

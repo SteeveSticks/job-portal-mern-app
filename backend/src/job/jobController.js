@@ -146,7 +146,6 @@ const deleteAJob = async (req, res) => {
     res.status(500).json({ message: "Error deleting a job!" });
   }
 };
-
 module.exports = {
   postAJob,
   getAllJobs,

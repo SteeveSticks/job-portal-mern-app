@@ -6,6 +6,7 @@ import App from "../App";
 import Login from "../components/login";
 import SignUp from "../components/signUp";
 import Form from "../pages/jobs/form";
+import AdminLogin from "../components/adminLogin";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
         element: <Form />,
       },
     ],
+  },
+
+  {
+    path: "/employer",
+    element: <AdminLogin />,
   },
 ]);
 

@@ -9,18 +9,10 @@ const port = process.env.PORT || 3000;
 
 //middleware
 app.use(express.json());
-const allowedOrigins = ["http://localhost:5173", "http://localhost:5174"];
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      console.log("Request Origin:", origin); // 👀 see what's coming in
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: " http://localhost:5174",
     credentials: true,
   })
 );
@@ -29,10 +21,12 @@ app.use(
 const jobRoutes = require("./src/job/jobRoute");
 const authRoute = require("./src/auth/authRoute");
 const oauthRoute = require("./src/auth/oauth");
+const employerRoute = require("./src/employer/employerRoute");
 
 app.use("/api/jobs", jobRoutes);
 app.use("/api/auth", authRoute);
 app.use("/api/oauth", oauthRoute);
+app.use("/api/employer", employerRoute);
 
 // root route
 app.get("/", (req, res) => {

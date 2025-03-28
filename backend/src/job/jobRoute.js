@@ -5,6 +5,7 @@ const {
   getSingleJob,
   updateJob,
   deleteAJob,
+  // getJobByEmail,
 } = require("./jobController");
 const { upload } = require("../config/cloudinary/cloudinary");
 const router = express.Router();

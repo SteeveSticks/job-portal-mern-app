@@ -18,7 +18,7 @@ const employerSchema = new mongoose.Schema({
   },
 });
 
-// hash the employer password before saving
+// hashing employer password before saving
 employerSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 10);

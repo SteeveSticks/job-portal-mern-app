@@ -13,7 +13,7 @@ const EmployerLogin = async (req, res) => {
     }
 
     if (employer.password !== password) {
-      return res.status(401).json({ message: " Invalid password" });
+      return res.status(401).send({ message: " Invalid password" });
     }
 
     const token = jwt.sign(
@@ -27,7 +27,6 @@ const EmployerLogin = async (req, res) => {
       token: token,
       employer: {
         username: employer.username,
-        password: employer.password,
         role: employer.role,
       },
     });

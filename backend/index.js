@@ -25,8 +25,8 @@ const employerRoute = require("./src/employer/employerRoute");
 
 app.use("/api/jobs", jobRoutes);
 app.use("/api/auth", authRoute);
-app.use("/api/oauth", oauthRoute);
 app.use("/api/employer", employerRoute);
+app.use("/api/oauth", oauthRoute);
 
 // root route
 app.get("/", (req, res) => {

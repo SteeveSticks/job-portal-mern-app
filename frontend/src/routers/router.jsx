@@ -7,6 +7,7 @@ import Login from "../components/login";
 import SignUp from "../components/signUp";
 import Form from "../pages/jobs/form";
 import AdminLogin from "../components/adminLogin";
+import PrivateRoute from "./privateRoute";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/job/:id",
-        element: <SingleJobPage />,
+        // to protect the singleJobPage we have to wrap it with privateRoute element
+        element: (
+          <PrivateRoute>
+            <SingleJobPage />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/log-in",

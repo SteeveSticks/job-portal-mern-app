@@ -4,12 +4,23 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../pages/google/googleCallback";
-import getBaseURL from "../utils/getBaseURL";
+import { useAuth } from "../context/authContext";
 
 const Login = () => {
   const [message, setMessage] = useState("");
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { login } = useAuth();
+
+  const onSubmit = async (data) => {
+    try {
+      await login(data.email, data.password);
+      alert("Login successful!💜");
+      navigate("/");
+    } catch (error) {
+      setMessage("Please provide a valid email and password");
+      console.error(error);
+    }
+  };
 
   function navigate(url) {
     window.location.href = url;
@@ -27,18 +38,6 @@ const Login = () => {
       console.error("Google Sign-In Error:", error);
     }
   }
-
-  const handleLogin = async (email, password) => {
-    try {
-      const response = await fetch(`${getBaseURL}/api/auth/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-    } catch (error) {
-      console.log("Error :", error);
-    }
-  };
 
   return (
     <div>

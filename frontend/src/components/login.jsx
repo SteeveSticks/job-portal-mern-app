@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../pages/google/googleCallback";
+import getBaseURL from "../utils/getBaseURL";
 
 const Login = () => {
   const [message, setMessage] = useState("");
@@ -29,7 +30,11 @@ const Login = () => {
 
   const handleLogin = async (email, password) => {
     try {
-      //
+      const response = await fetch(`${getBaseURL}/api/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
     } catch (error) {
       console.log("Error :", error);
     }

@@ -9,12 +9,13 @@ const verifyEmployerToken = (req, res, next) => {
   }
 
   try {
-    const user = jwt.verify(token, JWT_SECRET);
-    req.user = user;
+    const employer = jwt.verify(token, JWT_SECRET);
+    req.user = employer;
     next();
   } catch (error) {
     res.status(403).json({ message: "Invalid credentials" });
   }
 };
 
+// exports
 module.exports = verifyEmployerToken;

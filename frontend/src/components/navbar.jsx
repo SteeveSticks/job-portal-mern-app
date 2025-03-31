@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import logoImg from "../assets/logo.png";
 import { HiOutlineUser } from "react-icons/hi";
 import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "../context/authContext";
 
 const Navbar = () => {
-  const [currentUser, setCurrentUser] = useState(true);
+  const { user, logout } = useAuth();
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
   const handleSignOut = () => {
-    "";
+    logout();
   };
 
   const navigation = [
@@ -56,7 +57,7 @@ const Navbar = () => {
       {/* Right side */}
       <div className="flex gap-2 justify-center items-center">
         <div>
-          {currentUser ? (
+          {user ? (
             <>
               <button onClick={() => setIsDropDownOpen(!isDropDownOpen)}>
                 <HiOutlineUser className="size-6 cursor-pointer hover:text-gray-500 relative top-1" />
@@ -84,7 +85,7 @@ const Navbar = () => {
                         onClick={handleSignOut}
                         className="w-full inline-block text-left py-2 px-4 text-sm hover:bg-gray-100"
                       >
-                        Sign Out
+                        Logout
                       </button>
                     </li>
                   </ul>

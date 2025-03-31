@@ -6,8 +6,10 @@ import { CiClock2 } from "react-icons/ci";
 import { BiDollar } from "react-icons/bi";
 import { SlCalender } from "react-icons/sl";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
 
 const SingleJobPage = () => {
+  const { user } = useAuth();
   return (
     <div>
       <div className="flex w-full border gap-2 p-2  shadow-sm mt-24 rounded-sm">

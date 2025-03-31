@@ -3,6 +3,8 @@ import logoImg from "../assets/logo.png";
 import { HiOutlineUser } from "react-icons/hi";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/authContext";
+import { BiSolidMessageDetail } from "react-icons/bi";
+import { IoNotifications } from "react-icons/io5";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -59,12 +61,23 @@ const Navbar = () => {
         <div>
           {user ? (
             <>
-              <button onClick={() => setIsDropDownOpen(!isDropDownOpen)}>
-                <HiOutlineUser className="size-6 cursor-pointer hover:text-gray-500 relative top-1" />
-              </button>
+              <div className="flex justify-center items-center gap-5">
+                <button onClick={() => setIsDropDownOpen(!isDropDownOpen)}>
+                  <HiOutlineUser className="size-6 cursor-pointer hover:text-gray-500 relative top-1" />
+                </button>
+                <BiSolidMessageDetail className="size-6 cursor-pointer hover:text-gray-500 relative top-1" />
+                <IoNotifications className="size-6 cursor-pointer hover:text-gray-500 relative top-1" />
+                <Link
+                  to="/dashboard"
+                  className="hover:text-gray-400 text-gray-600 mt-1.5 border-l px-4"
+                >
+                  Employers/Post Job
+                </Link>
+              </div>
+
               {/* show dropdowns */}
               {isDropDownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded z-40">
+                <div className="absolute right-[300px] mt-4 w-48 bg-white shadow-lg rounded z-40">
                   <ul className="py-2">
                     {navigation.map((item) => (
                       <li
@@ -93,22 +106,22 @@ const Navbar = () => {
               )}
             </>
           ) : (
-            ""
+            <>
+              <Link
+                to="/log-in"
+                className="px-2 py-1 mr-2 text-black bg-transparent border text-sm rounded"
+              >
+                Log in
+              </Link>
+              <Link
+                to="/sign-up"
+                className="px-2 py-1 text-white outline-none text-sm rounded bg-secondary hover:bg-[#5C93EE]"
+              >
+                Sign up
+              </Link>
+            </>
           )}
         </div>
-
-        <Link
-          to="/log-in"
-          className="px-2 py-1 text-black bg-transparent border text-sm rounded"
-        >
-          Log in
-        </Link>
-        <Link
-          to="/sign-up"
-          className="px-2 py-1 text-white outline-none text-sm rounded bg-secondary hover:bg-[#5C93EE]"
-        >
-          Sign up
-        </Link>
       </div>
     </div>
   );

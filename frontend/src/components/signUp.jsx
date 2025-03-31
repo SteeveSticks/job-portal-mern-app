@@ -2,14 +2,24 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/authContext";
 
 const SignUp = () => {
   const [message, setMessage] = useState();
   const { register, handleSubmit } = useForm();
+  const { registerUser } = useAuth();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      await registerUser(data.email, data.password);
+      alert("User registered successfully!💜");
+    } catch (error) {
+      setMessage("Please provide a valid email and password");
+      console.error(error);
+    }
+  };
 
-  const handleGoogleSignIn = () => {};
+  const handleGoogleSignIn = () => {}; // No Google SignIn because betterAuth only works with #ts# typescript!
   return (
     <div>
       <div>
@@ -54,7 +64,7 @@ const SignUp = () => {
 
               {message && (
                 <p className="text-red-500 text-xs italic mb-3 ">
-                  Please provide a vaid emailand password
+                  Please provide a vaid email and password
                 </p>
               )}
 

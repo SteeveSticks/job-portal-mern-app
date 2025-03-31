@@ -72,7 +72,7 @@ const logIn = async (req, res) => {
 
 // controller function to google sign in a user
 const googleSignin = async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.header("Access-Control-Allow-Origin", "http://localhost:517");
   res.header("Referrer-Policy", "no-referrer-when-downgrade");
   res.header("Referrer-Policy", "no-referrer-when-downgrade");
 

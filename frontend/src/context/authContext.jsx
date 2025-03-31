@@ -16,13 +16,13 @@ export const AuthProvider = ({ children }) => {
   // save token to the localstorage and decode user
   const handleLogin = async (email, password) => {
     try {
-      const response = await fetch(`${getBaseURL}/api/auth/login`, {
+      const response = await fetch(`${getBaseURL()}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
-      const data = response.json();
+      const data = await response.json();
       if (!response.ok) throw new Error(data.message || "Login Failed");
 
       // save token and decode user
@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
 
   const handleRegister = async (email, password) => {
     try {
-      const response = await fetch(`${getBaseURL}/register`, {
+      const response = await fetch(`${getBaseURL()}/api/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }) => {
     user,
     isAuthenticated,
     login: handleLogin,
-    register: handleRegister,
+    registerUser: handleRegister,
     logout,
   }; // export
 

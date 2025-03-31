@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../pages/google/googleCallback";
 import { useAuth } from "../context/authContext";
 
 const Login = () => {
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const { login } = useAuth();
 
@@ -21,10 +22,6 @@ const Login = () => {
       console.error(error);
     }
   };
-
-  function navigate(url) {
-    window.location.href = url;
-  }
 
   async function auth() {
     try {
@@ -82,7 +79,7 @@ const Login = () => {
 
             {message && (
               <p className="text-red-500 text-xs italic mb-3 ">
-                Please provide a vaid emailand password
+                Please provide a vaid email and password
               </p>
             )}
 

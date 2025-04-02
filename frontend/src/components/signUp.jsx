@@ -12,7 +12,7 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     try {
       await registerUser(data.email, data.password);
-      alert("User registered successfully!💜");
+      alert("User registered successfully 💜!");
     } catch (error) {
       setMessage("Please provide a valid email and password");
       console.error(error);

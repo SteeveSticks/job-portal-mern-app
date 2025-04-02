@@ -1,10 +1,19 @@
 import React from "react";
+import { motion } from "framer-motion";
 
-const recomended = () => {
+const Recomended = () => {
   return (
     <>
       <div className="flex py-36 px-24 gap-4">
-        <div className="border px-6 py-6 w-96 h-64 rounded-sm shadow-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }} // start invisible and lower
+          animate={{ opacity: 1, y: 0 }} // fade in and move up
+          transition={{
+            duration: 1,
+            ease: "easeOut",
+          }}
+          className="border px-6 py-6 w-96 h-64 rounded-sm shadow-sm"
+        >
           <span className="text-secondary text-xl font-bold">1</span>
 
           <h1 className="font-bold text-primary text-2xl mt-5 mb-5">
@@ -15,7 +24,7 @@ const recomended = () => {
             All you need is your email address to create an account and start
             applying for job post.
           </p>
-        </div>
+        </motion.div>
 
         <div className="border px-6 py-6 w-96 h-64 rounded-sm shadow-sm">
           <span className="text-secondary text-xl font-bold">2</span>
@@ -47,4 +56,4 @@ const recomended = () => {
   );
 };
 
-export default recomended;
+export default Recomended;

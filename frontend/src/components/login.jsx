@@ -15,7 +15,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       await login(data.email, data.password);
-      alert("Login successful!💜");
+      alert("Login successful 💜!");
       navigate("/");
     } catch (error) {
       setMessage("Please provide a valid email and password");

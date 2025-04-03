@@ -16,30 +16,18 @@ const JobPage = ({ search, location }) => {
       item.jobLocation.toLowerCase().includes(location.toLowerCase())
   );
 
-  const jobListVariansts = {
-    hidden: { opacity: 0, y: 20 }, // start invisible and slighty slower
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1, // Delay each card for a stagger effect
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    }),
-  };
-
   return (
     <>
       <div className="mt-10 bg-[rgb(250,250,250)] md:grid grid-cols-2 lg:px-24 gap-6">
         {filteredJobs.length > 0 ? (
           filteredJobs.map((item, index) => (
             <motion.div
-              variants={jobListVariansts}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.2 }}
-              custom={index}
+              initial={{ opacity: 0, y: 50 }} // stagggerd effect from below
+              whileInView={{ opacity: 1, y: 0 }} //Animate into view
+              viewport={{ once: false, amount: 0.3 }} // Reanimate the scroll
+              whileHover={{ scale: 1.05, y: -5 }} // Slight zoom + lift on hover
+              whileTap={{ scale: 0.95 }} //shrink when clicked
+              transition={{ duration: 0.6, ease: "easeOut" }}
               key={item._id || index}
               className="flex w-full border gap-2 p-2  shadow-sm mt-24 rounded-sm"
             >

@@ -14,7 +14,7 @@ const banner = () => {
         </h1>
 
         {/* using 'motion.div' because motion can-not work with Link(react-router-dom) */}
-        <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 0.98 }}>
+        <motion.div whileTap={{ scale: 0.95 }} whileHover={{ scale: 0.98 }}>
           <Link
             to="/sign-up"
             className="px-8 py-2 text-white outline-none text-sm rounded bg-secondary hover:bg-[#5C93EE] "

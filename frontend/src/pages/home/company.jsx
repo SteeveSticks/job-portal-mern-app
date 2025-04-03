@@ -3,6 +3,7 @@ import macDonals from "../../assets/mac-company-1.png";
 import google from "../../assets/google-company-logo-3.png";
 import iphone from "../../assets/iphone-logo-company-2.png";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const company = () => {
   return (
@@ -18,7 +19,15 @@ const company = () => {
         </p>
       </div>
 
-      <div className="flex gap-5">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 1,
+          ease: "easeOut",
+        }}
+        className="flex gap-5"
+      >
         <div className="border p-3 grid items-center justify-center text-center px-4 h-96 w-7/12 text-wrap rounded-lg shadow-md">
           <div>
             <img
@@ -60,7 +69,7 @@ const company = () => {
             finding the right opportunity as smooth as using an iPhone."
           </p>
         </div>
-      </div>
+      </motion.div>
 
       <div className="mt-40 flex flex-col items-center justify-center">
         <h1 className="font-bold text-4xl text-primary mb-6">

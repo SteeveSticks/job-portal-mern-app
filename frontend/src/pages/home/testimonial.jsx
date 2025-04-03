@@ -1,16 +1,25 @@
 import React from "react";
 import { FaQuoteLeft } from "react-icons/fa";
 import workerImg from "../../assets/home-2.jpg";
+import { motion } from "framer-motion";
 
 const testimonial = () => {
   return (
     <div className="flex justify-center items-center p-2 bg-gray-50 mb-11">
       <div className="pl-36">
         <FaQuoteLeft className="text-secondary mb-5" />
-        <h1 className="font-bold text-3xl text-primary mb-9">
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 1,
+            ease: "easeOut",
+          }}
+          className="font-bold text-3xl text-primary mb-9"
+        >
           I've used other websites in the past for hiring; nothing has ever been
           this easy, this simple, and this effective."
-        </h1>
+        </motion.h1>
         <h3 className="text-lg ">Emmanuel Ikwuegbu</h3>
       </div>
 

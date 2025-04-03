@@ -6,13 +6,12 @@ const Recomended = () => {
     <>
       <AnimatePresence>
         <motion.div
-          initial={{ opacity: 0, y: 50 }} // start invisible and lower
-          whileInView={{ opacity: 1, y: 0 }} // fade in and move up
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{
             duration: 1,
             ease: "easeOut",
           }}
-          viewport={{ once: false, amount: 0.2 }}
           className="flex py-36 px-24 gap-4"
         >
           <motion.div className="border px-6 py-6 w-96 h-64 rounded-sm shadow-sm">

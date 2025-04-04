@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
 import { AuthProvider } from "./context/authContext";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
@@ -12,6 +13,14 @@ const App = () => {
         <Navbar />
         <main className="min-h-screen font-primary">
           <Outlet />
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              style: {
+                fontSize: "14px",
+              },
+            }}
+          />
         </main>
         <Footer />
       </div>

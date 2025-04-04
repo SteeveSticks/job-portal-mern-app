@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../pages/google/googleCallback";
 import { useAuth } from "../context/authContext";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [message, setMessage] = useState("");
@@ -15,10 +16,10 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       await login(data.email, data.password);
-      alert("Login successful 💜!");
+      toast.success("Login successful 💜!");
       navigate("/");
     } catch (error) {
-      setMessage("Please provide a valid email and password");
+      toast.error("Please provide a valid email and password");
       console.error(error);
     }
   };

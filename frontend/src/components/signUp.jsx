@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/authContext";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
   const [message, setMessage] = useState();
@@ -12,9 +13,9 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     try {
       await registerUser(data.email, data.password);
-      alert("User registered successfully 💜!");
+      toast.success("User registered successfully 💜!");
     } catch (error) {
-      setMessage("Please provide a valid email and password");
+      toast.error("Please provide a valid email and password");
       console.error(error);
     }
   };

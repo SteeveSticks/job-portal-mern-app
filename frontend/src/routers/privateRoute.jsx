@@ -3,9 +3,9 @@ import { Navigate } from "react-router-dom";
 
 // for protecting the checkout route
 const PrivateRoute = ({ children }) => {
-  const { currentUser } = useAuth(); // form authContext
+  const { user } = useAuth(); // form authContext
 
-  if (currentUser) {
+  if (user) {
     return children;
   }
 

@@ -77,7 +77,7 @@ const Navbar = () => {
 
               {/* show dropdowns */}
               {isDropDownOpen && (
-                <div className="absolute right-[300px] mt-4 w-48 bg-white shadow-lg rounded z-40">
+                <div className="absolute right-[140px] mt-4 w-48 bg-white shadow-lg rounded z-40">
                   <ul className="py-2">
                     {navigation.map((item) => (
                       <li

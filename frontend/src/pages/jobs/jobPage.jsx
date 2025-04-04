@@ -1,20 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FiMapPin } from "react-icons/fi";
 import { CiClock2 } from "react-icons/ci";
 import { BiDollar } from "react-icons/bi";
 import { SlCalender } from "react-icons/sl";
-import { data } from "./job";
+// import { data } from "./job";
 import { Link } from "react-router-dom";
 import { getImgUrl } from "../../utils/getImgURL";
 import { motion } from "framer-motion";
+import getBaseURL from "../../utils/getBaseURL";
 
 const JobPage = ({ search, location }) => {
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   // fitler jobs based on search input
-  const filteredJobs = data.filter(
+  const filteredJobs = jobs.filter(
     (item) =>
       item.jobTitle.toLowerCase().includes(search.toLowerCase()) &&
       item.jobLocation.toLowerCase().includes(location.toLowerCase())
   );
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const response = await fetch(`${getBaseURL()}/api/jobs/`, {
+          method: "GET",
+        });
+
+        console.log(response);
+
+        const data = await response.json();
+        console.log(data);
+        if (!response.ok)
+          throw new Error(data.message || "Failed to fetch jobs");
+
+        setJobs(data.jobs);
+        setLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch jobs:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchJobs();
+  }, []); // runs once
+
+  if (loading) return <div>Loading jobs...</div>;
 
   return (
     <>
@@ -73,7 +104,7 @@ const JobPage = ({ search, location }) => {
                   <div className="flex items-center gap-1">
                     <BiDollar className="text-sm text-gray-400 " />
                     <div className="text-sm text-gray-400 ">
-                      {item.minPrice}-
+                      {item.minPrice} -
                     </div>
                     <div className="text-sm text-gray-400 ">
                       {item.maxPrice}k
@@ -83,7 +114,7 @@ const JobPage = ({ search, location }) => {
                   <div className="flex items-center gap-1">
                     <SlCalender className="text-sm text-gray-400 " />
                     <h5 className="text-sm text-gray-400 ">
-                      {item.postingDate}
+                      {item.postingDate.split("T")[0]}
                     </h5>
                   </div>
                 </div>

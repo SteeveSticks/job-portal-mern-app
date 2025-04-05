@@ -7,6 +7,7 @@ import { SlCalender } from "react-icons/sl";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import getBaseURL from "../../utils/getBaseURL";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const SingleJobPage = () => {
   const { id } = useParams(); // this get the job ID from the URL
@@ -17,6 +18,7 @@ const SingleJobPage = () => {
   const [isChecked, setIsChecked] = useState(false);
   const navigate = useNavigate();
 
+  // geting a single job from backend
   useEffect(() => {
     const fetchSingleJob = async () => {
       try {
@@ -42,6 +44,7 @@ const SingleJobPage = () => {
     fetchSingleJob();
   }, [id]); // Fetch data whenever the id changes
 
+  // handling input file change
   const handleFileChange = (e) => {
     const file = e.target.files[0]; // Get the selected file
 
@@ -75,14 +78,31 @@ const SingleJobPage = () => {
     setIsChecked(e.target.checked);
   };
 
-  const handleSubmit = () => {
+  // handle request before user submits // getting application from backend
+  const handleSubmit = async () => {
     if (!isChecked || !resumeFile) {
       toast.error("Please upload a resume and accept terms to apply.");
       return;
     }
 
-    toast.success("Terms accepted! Proceeding to application...");
-    navigate("/form");
+    const formData = new FormData();
+    formData.append("resume", resumeFile);
+    formData.append("jobId", id);
+
+    try {
+      const response = await axios.post(
+        `${getBaseURL()}/api/upload/apply`,
+        formData
+      );
+      toast.success("Resume submitted successfully");
+      console.log(response.data);
+
+      // Navigate after the upload is succesful
+      navigate("/form");
+    } catch (error) {
+      console.log("Failed to upload resume :", error);
+      toast.error("Error: Failed to Upload resume");
+    }
   };
 
   if (loading) return <div>Loading...</div>;
@@ -162,6 +182,7 @@ const SingleJobPage = () => {
 
             <div className="">
               <button
+                type="submit"
                 onClick={handleSubmit}
                 className="px-6 py-1.5 text-white outline-none text-sm rounded bg-secondary hover:bg-[#5C93EE] mr-5"
               >

@@ -178,14 +178,14 @@ const SingleJobPage = () => {
               onChange={handleCheckBoxChange}
             />
             <label htmlFor="checkbox" className="text-sm text-primary ml-2">
-              By applying you agree to the
-              <span className="text-blue-500 underline underline-offset-2">
-                Terms & Condition
-              </span>
-              and
-              <span className="text-blue-500 underline underline-offset-2">
+              By applying you agree to the{" "}
+              <Link className="text-blue-500 underline underline-offset-2 cursor-pointer">
+                Terms & Condition{" "}
+              </Link>
+              and{" "}
+              <Link className="text-blue-500 underline underline-offset-2 cursor-pointer">
                 Job Policy.
-              </span>
+              </Link>
             </label>
           </div>
         </div>

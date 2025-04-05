@@ -41,7 +41,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/form",
-        element: <Form />,
+
+        element: (
+          <PrivateRoute>
+            <Form />
+          </PrivateRoute>
+        ),
       },
     ],
   },

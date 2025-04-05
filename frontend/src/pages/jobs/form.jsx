@@ -1,27 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { data } from "./job";
+import { useAuth } from "../../context/authContext";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Form = () => {
   const { register, handleSubmit } = useForm();
-  const [isChecked, setIsChecked] = useState(false);
-  const jobItems = data; //TODO: get user from auth
-  const currentUser = true;
-  const onSubmit = (data) => {
-    const newApplicant = {
-      name: data.name,
-      email: currentUser?.email,
-      address: {
-        city: data.city,
-        country: data.country,
-        state: data.state,
-      },
-      phone: data.phone,
-      jobIds: jobItems.map((item) => item._id),
-    };
-    console.log(newApplicant);
+  const { user } = useAuth();
+  console.log(user);
+  const navigate = useNavigate();
+
+  const onSubmit = () => {
+    try {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Application successful",
+        text: "Hiring team will get back to you soon",
+        showConfirmButton: true,
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Yes, It's Okay!",
+      });
+      navigate("/all-jobs");
+    } catch (error) {
+      console.log("Error uploading application :", error);
+      toast.error("Failed to upload application");
+    }
   };
+
   return (
     <div className="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
       <div className="container max-w-screen-lg mx-auto">
@@ -57,9 +64,11 @@ const Form = () => {
                       id="email"
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                       disabled
+                      defaultValue={user.email || ""}
                       placeholder="email@domain.com"
                     />
                   </div>
+
                   <div className="md:col-span-5">
                     <label htmlFor="phone">Phone Number</label>
                     <input
@@ -185,34 +194,9 @@ const Form = () => {
                     </div>
                   </div>
 
-                  <div className="md:col-span-5 mt-3">
-                    <div className="inline-flex items-center">
-                      <input
-                        onChange={(e) => setIsChecked(e.target.checked)}
-                        type="checkbox"
-                        name="billing_same"
-                        id="billing_same"
-                        className="form-checkbox"
-                      />
-                      <label htmlFor="billing_same" className="ml-2 ">
-                        By applying, you agree to the
-                        <Link className="underline underline-offset-2 text-blue-600">
-                          Terms & Conditions
-                        </Link>
-                        and
-                        <Link className="underline underline-offset-2 text-blue-600">
-                          Job Policy.
-                        </Link>
-                      </label>
-                    </div>
-                  </div>
-
                   <div className="md:col-span-5 text-right">
                     <div className="inline-flex items-end">
-                      <button
-                        disabled={!isChecked}
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
-                      >
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
                         Submit Application
                       </button>
                     </div>

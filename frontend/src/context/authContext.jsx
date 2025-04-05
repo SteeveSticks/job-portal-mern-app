@@ -9,6 +9,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [user, setUser] = useState(token ? jwtDecode(token) : null);
+  console.log(user); // get the user information e.g, id, email, username
 
   // check if the user is authenticated
   const isAuthenticated = !!token;

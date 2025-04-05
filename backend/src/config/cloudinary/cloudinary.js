@@ -18,6 +18,17 @@ const storage = new CloudinaryStorage({
   },
 });
 
-const upload = multer({ storage });
+const resumeStorage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "job_portal/resumes", // creates a seprate folder for resumes
+    resource_type: "raw", // tell cloudinary your uploading raw files not images
+    allowed_formats: ["pdf", "doc", "docx"],
+  },
+});
 
-module.exports = { upload, cloudinary };
+const upload = multer({ storage });
+const uploadResume = multer({ storage: resumeStorage });
+
+// export
+module.exports = { upload, cloudinary, uploadResume };

@@ -22,11 +22,13 @@ const jobRoutes = require("./src/job/jobRoute");
 const authRoute = require("./src/auth/authRoute");
 const oauthRoute = require("./src/auth/oauth");
 const employerRoute = require("./src/employer/employerRoute");
+const uploadRoute = require("./src/Upload/applicationRoute");
 
 app.use("/api/jobs", jobRoutes);
 app.use("/api/auth", authRoute);
 app.use("/api/employer", employerRoute);
 app.use("/api/oauth", oauthRoute);
+app.use("/api/upload", uploadRoute);
 
 // root route
 app.get("/", (req, res) => {

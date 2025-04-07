@@ -2,13 +2,14 @@ import {} from "react";
 import { Link, Outlet } from "react-router-dom";
 import { HiViewGridAdd } from "react-icons/hi";
 import { MdOutlineManageHistory } from "react-icons/md";
+import { ThemeToggleButton } from "./common/themeToggleButton";
 
 const DashBoardLayout = () => {
-  const handleLogout = () => {};
+  // const handleLogout = () => {};
 
   return (
     <div>
-      <section className="flex md:bg-gray-100 min-h-screen overflow-hidden">
+      <section className="flex md:bg-gray-100 min-h-screen overflow-hidden dark:bg-gray-900">
         {/* the tag aside is used for sidebars */}
         <aside className="hidden sm:flex sm:flex-col shadow-sm border-b border-r border-l">
           <a
@@ -164,7 +165,10 @@ const DashBoardLayout = () => {
             </div>
 
             {/* right side navbar */}
-            <div className="flex flex-shrink-0 items-center ml-auto"></div>
+            <div className="flex flex-shrink-0 items-center ml-auto">
+              {/* Dark Mode Toggler */}
+              <ThemeToggleButton />
+            </div>
           </header>
           <main className="p-6 sm:p-10 space-y-6 ">
             <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">

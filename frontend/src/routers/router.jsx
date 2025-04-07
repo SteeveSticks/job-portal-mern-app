@@ -8,6 +8,7 @@ import SignUp from "../components/signUp";
 import Form from "../pages/jobs/form";
 import AdminLogin from "../components/adminLogin";
 import PrivateRoute from "./privateRoute";
+import DashBoardLayout from "../pages/dashboard/dashboardLayout";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: "/employer",
     element: <AdminLogin />,
+  },
+  {
+    path: "/dashboard",
+    element: <DashBoardLayout />,
   },
 ]);
 

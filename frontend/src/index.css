@@ -47,6 +47,6 @@ html {
   @apply w-full max-w-[90%] md:max-w-[700px] min-h-[300px] m-auto px-0 py-2 rounded flex-col items-center bg-green-400;
 }
 
-.dropdown-toggle {
+/* .dropdown-toggle {
   @apply inline-flex justify-center px-4 py-2 text-sm font-medium bg-gray-200 dark:bg-gray-800 dark:text-white text-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-700 transition;
-}
+}  */

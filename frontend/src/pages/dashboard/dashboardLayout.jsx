@@ -115,7 +115,7 @@ const DashBoardLayout = () => {
         {/* Main area */}
         <div className="flex-grow">
           {/* Navbar area  */}
-          <header className="sticky top-0 flex  w-full bg-white border-gray-200 z-99999 dark:border-gray-800 dark:bg-gray-900 lg:border-b justify-center items-center ">
+          <header className="sticky top-0 flex  w-full bg-white border-gray-200 z-99999 dark:border-gray-800 dark:bg-gray-900 lg:border-b justify-center items-center py-4 px-2">
             <button className="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
               <span className="sr-only">Menu</span>
               <svg
@@ -159,7 +159,7 @@ const DashBoardLayout = () => {
               />
               <a
                 href="#"
-                className="absolute left-[37%] top-[25%] inline-flex items-center gap-0.5 rounded-lg border-2 bg-gray-50 px-[9px] py-[3px] text-sm text-gray-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-400"
+                className="absolute left-[37%] top-[30%] inline-flex items-center gap-0.5 rounded-lg border-2 bg-gray-50 px-[9px] py-[3px] text-sm text-gray-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-400"
               >
                 <span> ⌘ </span>
                 <span> K </span>
@@ -167,7 +167,7 @@ const DashBoardLayout = () => {
             </div>
 
             {/* right side navbar */}
-            <div className="flex flex-shrink-0 items-center ml-auto">
+            <div className="flex flex-shrink-0 items-center ml-auto gap-3 px-3">
               {/* Dark Mode Toggler */}
               <ThemeToggleButton />
               {/* Notification dropdown */}
@@ -176,7 +176,9 @@ const DashBoardLayout = () => {
               <UserDropdown />
             </div>
           </header>
-          <main className="p-6 sm:p-10 space-y-6 ">
+
+          {/* Main  */}
+          <main className="p-6 sm:p-10 space-y-6">
             <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
               <div className="mr-6">
                 <h1 className="text-4xl font-semibold mb-2">Dashboard</h1>

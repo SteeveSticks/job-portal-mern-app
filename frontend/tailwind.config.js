@@ -7,6 +7,7 @@ export default {
       colors: {
         primary: "#141414",
         secondary: "#3575E2",
+        success: "#51A687",
       },
       fontFamily: {
         primary: ["DM Sans", "sans-serif"],

@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+.backdrop {
+  @apply absolute top-0 left-0 h-[100%] w-[100%] bg-[#000000e1] flex items-center justify-center;
+}
+
+.modal {
+  @apply w-full max-w-[90%] md:max-w-[700px] min-h-[300px] m-auto px-0 py-2 rounded flex-col items-center bg-green-400;
+}
+
+.dropdown-toggle {
+  @apply inline-flex justify-center px-4 py-2 text-sm font-medium bg-gray-200 dark:bg-gray-800 dark:text-white text-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-700 transition;
+}

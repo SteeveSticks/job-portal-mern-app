@@ -156,7 +156,7 @@ const DashBoardLayout = () => {
                 className="dark:bg-dark-900 h-11 py-2.5 pl-10 pr-14 text-sm w-full bg-transparent border-4 border-transparent placeholder:font-semibold placeholder-gray-400 rounded-lg shadow-md outline-none focus:shadow-[0_0_4px_#3b82f6] focus:outline-hidden focus:ring-1 focus:ring-brand-500/10 dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 xl:w-[430px]"
               />
               <a
-                href="/dashboard"
+                href="#"
                 className="absolute left-[37%] top-[25%] inline-flex items-center gap-0.5 rounded-lg border-2 bg-gray-50 px-[9px] py-[3px] text-sm text-gray-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-400"
               >
                 <span> ⌘ </span>
@@ -168,6 +168,8 @@ const DashBoardLayout = () => {
             <div className="flex flex-shrink-0 items-center ml-auto">
               {/* Dark Mode Toggler */}
               <ThemeToggleButton />
+              {/* Notification dropdown */}
+              {/* <NotificationDropdown /> */}
             </div>
           </header>
           <main className="p-6 sm:p-10 space-y-6 ">

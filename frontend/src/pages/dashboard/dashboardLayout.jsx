@@ -4,6 +4,7 @@ import { HiViewGridAdd } from "react-icons/hi";
 import { MdOutlineManageHistory } from "react-icons/md";
 import { ThemeToggleButton } from "./common/themeToggleButton";
 import { NotificationDropdown } from "./common/notificationDropdown";
+import { UserDropdown } from "./common/userDropdown";
 
 const DashBoardLayout = () => {
   // const handleLogout = () => {};
@@ -171,6 +172,8 @@ const DashBoardLayout = () => {
               <ThemeToggleButton />
               {/* Notification dropdown */}
               <NotificationDropdown />
+              {/* user */}
+              <UserDropdown />
             </div>
           </header>
           <main className="p-6 sm:p-10 space-y-6 ">

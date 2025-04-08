@@ -3,6 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import { HiViewGridAdd } from "react-icons/hi";
 import { MdOutlineManageHistory } from "react-icons/md";
 import { ThemeToggleButton } from "./common/themeToggleButton";
+import { NotificationDropdown } from "./common/notificationDropdown";
 
 const DashBoardLayout = () => {
   // const handleLogout = () => {};
@@ -169,7 +170,7 @@ const DashBoardLayout = () => {
               {/* Dark Mode Toggler */}
               <ThemeToggleButton />
               {/* Notification dropdown */}
-              {/* <NotificationDropdown /> */}
+              <NotificationDropdown />
             </div>
           </header>
           <main className="p-6 sm:p-10 space-y-6 ">

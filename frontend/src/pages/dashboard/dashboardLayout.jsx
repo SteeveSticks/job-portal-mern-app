@@ -52,28 +52,34 @@ const DashBoardLayout = () => {
                     d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
                   />
                 </svg>
-                <span className="font-semibold">Folders</span>
+                <span className="font-semibold dark:text-gray-50">Folders</span>
               </a>
               <Link
                 to="/dashboard"
                 className="inline-flex text-center gap-3 focus:bg-[#ecf3ff] dark:focus:bg-gray-800 focus:text-[#465fff] rounded-lg px-2 py-2  dark:focus:text-[#7592ff] hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 <RxDashboard className="h-6 w-6" />
-                <span className="font-semibold">Dashboard</span>
+                <span className="font-semibold dark:text-gray-50">
+                  Dashboard
+                </span>
               </Link>
               <Link
                 to="/dashboard/add-new-job"
                 className="inline-flex text-center gap-3 focus:bg-[#ecf3ff] dark:focus:bg-gray-800 focus:text-[#465fff] rounded-lg px-2 py-2  dark:focus:text-[#7592ff] hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 <HiViewGridAdd className="h-6 w-6" />
-                <span className="font-semibold">Add Book</span>
+                <span className="font-semibold dark:text-gray-50">
+                  Add Jobs
+                </span>
               </Link>
               <Link
                 to="/dashboard/manage-books"
                 className="inline-flex text-center gap-3 focus:bg-[#ecf3ff] dark:focus:bg-gray-800 focus:text-[#465fff] rounded-lg px-2 py-2  dark:focus:text-[#7592ff] hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 <MdOutlineManageHistory className="h-6 w-6" />
-                <span className="font-semibold">Documents</span>
+                <span className="font-semibold dark:text-gray-50">
+                  Documents
+                </span>
               </Link>
             </nav>
             <div className="inline-flex items-center justify-center h-50 w-full border-t border-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 px-2 py-2 focus:bg-[#ecf3ff] dark:border-gray-800">
@@ -98,7 +104,9 @@ const DashBoardLayout = () => {
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span className="font-semibold">Settings</span>
+                <span className="font-semibold dark:text-gray-50">
+                  Settings
+                </span>
               </button>
             </div>
           </div>

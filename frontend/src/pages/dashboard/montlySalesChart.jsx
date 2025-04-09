@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Dropdown } from "./common/dropdown";
 import { DropdownItem } from "./common/dropdownitem";
 
-export default function MonthlySalesChart() {
+export function MonthlySalesChart() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {

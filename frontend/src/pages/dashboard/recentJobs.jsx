@@ -1,67 +1,67 @@
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "./table";
-import Badge from "../ui/badge/Badge";
+import product1 from "../../assets/products/product-01.jpg";
+import product2 from "../../assets/products/product-02.jpg";
+import product3 from "../../assets/products/product-03.jpg";
+import product4 from "../../assets/products/product-04.jpg";
+import product5 from "../../assets/products/product-05.jpg";
+import Badge from "./badge";
 
 // Define the table data using the interface
 const tableData = [
   {
     id: 1,
-    name: "MacBook Pro 13”",
-    variants: "2 Variants",
-    category: "Laptop",
-    price: "$2399.00",
+    name: "Software Engineer",
+    category: "Company A",
+    price: "$50,000",
     status: "Delivered",
-    image: "/images/product/product-01.jpg", // Replace with actual image URL
+    image: [product1], // Replace with actual image URL
   },
   {
     id: 2,
-    name: "Apple Watch Ultra",
-    variants: "1 Variant",
-    category: "Watch",
-    price: "$879.00",
+    name: "Product Manager",
+    category: "Company B",
+    price: "$70,000",
     status: "Pending",
-    image: "/images/product/product-02.jpg", // Replace with actual image URL
+    image: [product2], // Replace with actual image URL
   },
   {
     id: 3,
-    name: "iPhone 15 Pro Max",
-    variants: "2 Variants",
-    category: "SmartPhone",
-    price: "$1869.00",
+    name: "Data Scientist",
+    category: "Creative Studio",
+    price: "$85,000",
     status: "Delivered",
-    image: "/images/product/product-03.jpg", // Replace with actual image URL
+    image: [product3],
   },
   {
     id: 4,
-    name: "iPad Pro 3rd Gen",
-    variants: "2 Variants",
-    category: "Electronics",
-    price: "$1699.00",
+    name: "Frontend Developer",
+    category: "FinTech Co.",
+    price: "$110,000",
     status: "Canceled",
-    image: "/images/product/product-04.jpg", // Replace with actual image URL
+    image: [product4],
   },
   {
     id: 5,
-    name: "AirPods Pro 2nd Gen",
-    variants: "1 Variant",
-    category: "Accessories",
-    price: "$240.00",
+    name: " Backend Developer",
+    category: "Retail Enterprise",
+    price: "$120,000",
     status: "Delivered",
-    image: "/images/product/product-05.jpg", // Replace with actual image URL
+    image: [product5],
   },
 ];
 
-export default function RecentOrders() {
+export function RecentJobs() {
   return (
     <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6">
       <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            Recent Orders
+          <h3 className="text-base font-semibold text-gray-800 dark:text-white/90">
+            Recent Jobs
           </h3>
         </div>
 
-        <div className="flex items-center gap-3">
-          <button className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+        <div className="flex items-center gap-2">
+          <button className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 shadow-sm">
             <svg
               className="stroke-current fill-white dark:fill-gray-800"
               width="20"
@@ -99,7 +99,7 @@ export default function RecentOrders() {
             </svg>
             Filter
           </button>
-          <button className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+          <button className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 shadow-sm">
             See all
           </button>
         </div>
@@ -111,25 +111,25 @@ export default function RecentOrders() {
             <TableRow>
               <TableCell
                 isHeader
-                className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="py-3 font-medium text-gray-500 text-start text-sm text-theme-xs dark:text-gray-400 pl-2"
               >
-                Products
+                Job
               </TableCell>
               <TableCell
                 isHeader
-                className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="py-3 font-medium text-gray-500 text-start text-sm text-theme-xs dark:text-gray-400"
               >
                 Category
               </TableCell>
               <TableCell
                 isHeader
-                className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="py-3 font-medium text-gray-500 text-start text-sm pl-2 text-theme-xs dark:text-gray-400"
               >
                 Price
               </TableCell>
               <TableCell
                 isHeader
-                className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 pl-2"
               >
                 Status
               </TableCell>
@@ -151,34 +151,33 @@ export default function RecentOrders() {
                       />
                     </div>
                     <div>
-                      <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                      <p className="font-medium text-gray-800 text-theme-sm text-sm dark:text-white/90">
                         {product.name}
                       </p>
-                      <span className="text-gray-500 text-theme-xs dark:text-gray-400">
-                        {product.variants}
-                      </span>
                     </div>
                   </div>
                 </TableCell>
-                <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+
+                <TableCell className="py-3 text-gray-500 text-theme-sm text-sm dark:text-gray-400 pr-2">
+                  {product.category}
+                </TableCell>
+                <TableCell className="py-3 text-gray-500 text-theme-sm text-sm dark:text-gray-400">
                   {product.price}
                 </TableCell>
                 <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                  {product.category}
-                </TableCell>
-                <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                  <Badge
-                    size="sm"
-                    color={
+                  <div
+                    className={
                       product.status === "Delivered"
-                        ? "success"
+                        ? "rounded-xl bg-[#ecfdf3] text-[#039855] dark:bg-[#ecfdf3]/10 dark:text-[#12b76a] py-1 px-2"
                         : product.status === "Pending"
-                        ? "warning"
-                        : "error"
+                        ? "rounded-xl bg-yellow-100 text-yellow-500 dark:bg-[#ecfdf3]/10 dark:text-yellow py-1 px-2"
+                        : product.status === "Warning"
+                        ? "rounded-xl bg-[#fef3f2] text-[#d92d20] dark:bg-[#fef3f2]/10 dark:text-[#f04438] py-1 px-2"
+                        : "rounded-xl bg-[#fef3f2] text-[#d92d20] dark:bg-[#fef3f2]/10 dark:text-[#f04438] py-1 px-2" // Default for error or unknown status
                     }
                   >
-                    {product.status}
-                  </Badge>
+                    <span className="text-sm ">{product.status}</span>
+                  </div>
                 </TableCell>
               </TableRow>
             ))}

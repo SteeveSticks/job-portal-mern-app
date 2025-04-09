@@ -5,7 +5,8 @@ import { FaArrowDown } from "react-icons/fa6";
 import { RiComputerLine } from "react-icons/ri";
 import { MonthlyTarget } from "./MontlyTargetChart";
 import { MdOutlinePendingActions } from "react-icons/md";
-import MonthlySalesChart from "./montlySalesChart";
+import { MonthlySalesChart } from "./montlySalesChart";
+import { RecentJobs } from "./recentJobs";
 
 const Dashboard = () => {
   return (
@@ -74,7 +75,7 @@ const Dashboard = () => {
             </h4>
           </div>
 
-          <span className="flex justify-end items-center gap-1 rounded-xl bg-yellow-100 text-yellow-500 dark:bg-[#ecfdf3]/10 dark:text-yello py-1 px-2">
+          <span className="flex justify-end items-center gap-1 rounded-xl bg-yellow-100 text-yellow-500 dark:bg-[#ecfdf3]/10 dark:text-yellow py-1 px-2">
             <h4 className="font-semibold text-sm ">Pending</h4>
           </span>
         </div>
@@ -89,6 +90,11 @@ const Dashboard = () => {
       {/* Montly Sales Chart */}
       <div className="col-span-1 sm:col-span-2 lg:col-span-2">
         <MonthlySalesChart />
+      </div>
+
+      {/* Recent Jobs */}
+      <div className="col-span-1">
+        <RecentJobs />
       </div>
     </div>
   );

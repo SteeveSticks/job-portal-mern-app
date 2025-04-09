@@ -3,8 +3,9 @@ import { RiGroupLine } from "react-icons/ri";
 import { FaArrowUp } from "react-icons/fa6";
 import { FaArrowDown } from "react-icons/fa6";
 import { RiComputerLine } from "react-icons/ri";
-import MonthlyTarget from "./MontlyTargetChart";
+import { MonthlyTarget } from "./MontlyTargetChart";
 import { MdOutlinePendingActions } from "react-icons/md";
+import MonthlySalesChart from "./montlySalesChart";
 
 const Dashboard = () => {
   return (
@@ -86,6 +87,9 @@ const Dashboard = () => {
       </div>
 
       {/* Montly Sales Chart */}
+      <div className="col-span-1 sm:col-span-2 lg:col-span-2">
+        <MonthlySalesChart />
+      </div>
     </div>
   );
 };

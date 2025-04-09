@@ -4,7 +4,7 @@ import { IoIosMore } from "react-icons/io";
 import { DropdownItem } from "./common/dropdownitem";
 import { Dropdown } from "./common/dropdown";
 
-export default function MonthlyTarget() {
+export function MonthlyTarget() {
   const series = [75.55];
   const options = {
     colors: ["#465FFF"],

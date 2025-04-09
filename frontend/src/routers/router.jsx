@@ -51,7 +51,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-
   {
     path: "/employer",
     element: <AdminLogin />,
@@ -59,6 +58,24 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashBoardLayout />,
+    children: [
+      {
+        path: "",
+        element: <Dashboard />,
+      },
+      {
+        path: "add-new-job",
+        element: <AddJob />,
+      },
+      {
+        path: "edit-job/:id",
+        element: <UpdateBook />,
+      },
+      {
+        path: "manage-jobs",
+        element: <ManageBooks />,
+      },
+    ],
   },
 ]);
 

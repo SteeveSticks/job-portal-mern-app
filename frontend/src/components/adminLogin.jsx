@@ -1,11 +1,49 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import getBaseURL from "../utils/getBaseURL";
 
 const AdminLogin = () => {
   const [message, setMessage] = useState("");
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    // console.log(data);
+    try {
+      const response = await fetch(`${getBaseURL()}/api/employer/login`, {
+        method: "POST",
+        headers: { "Content-Type": "Application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const auth = await response.json();
+
+      if (!response.ok) {
+        throw new Error(auth.message || "Login failed");
+      }
+
+      console.log("Auth response :", auth);
+
+      if (auth.token) {
+        localStorage.setItem("token", auth.token);
+        setTimeout(() => {
+          localStorage.removeItem("token");
+          alert("Token has expired! Please Login again.");
+          navigate("/");
+        }, 3600 * 1000); // after 1hr this token will expire
+
+        alert("Admin Login successfull!");
+        navigate("/dashboard");
+      } else {
+        throw new Error("Token not found");
+      }
+    } catch (error) {
+      setMessage("Please provide a vaid username and password");
+      console.log("Failed to login admin :", error);
+      console.error(error);
+    }
+  };
 
   return (
     <div>
@@ -24,10 +62,10 @@ const AdminLogin = () => {
                 Username
               </label>
               <input
-                {...register("email", { required: true })}
+                {...register("username", { required: true })}
                 type="text"
-                name="email"
-                id="email"
+                name="username"
+                id="username"
                 placeholder="Username"
                 className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow"
               />
@@ -51,9 +89,7 @@ const AdminLogin = () => {
             </div>
 
             {message && (
-              <p className="text-red-500 text-xs italic mb-3 ">
-                Please provide a vaid emailand password
-              </p>
+              <p className="text-red-500 text-xs italic mb-3 ">{message}</p>
             )}
 
             <div>

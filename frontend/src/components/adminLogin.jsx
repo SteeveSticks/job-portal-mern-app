@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import getBaseURL from "../utils/getBaseURL";
+import toast from "react-hot-toast";
 
 const AdminLogin = () => {
   const [message, setMessage] = useState("");
@@ -33,7 +34,7 @@ const AdminLogin = () => {
           navigate("/");
         }, 3600 * 1000); // after 1hr this token will expire
 
-        alert("Admin Login successfull!");
+        toast.success("Admin Login successfull!");
         navigate("/dashboard");
       } else {
         throw new Error("Token not found");

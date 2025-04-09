@@ -11,6 +11,7 @@ import PrivateRoute from "./privateRoute";
 import DashBoardLayout from "../pages/dashboard/dashboardLayout";
 import Dashboard from "../pages/dashboard/dashboard";
 import AdminRoute from "./adminRoute";
+import AddJob from "../pages/dashboard/addBook/AddJob";
 
 const router = createBrowserRouter([
   {
@@ -74,10 +75,10 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
-      // {
-      //   path: "add-new-job",
-      //   element: <AddJob />,
-      // },
+      {
+        path: "add-new-job",
+        element: <AddJob />,
+      },
       // {
       //   path: "edit-job/:id",
       //   element: <UpdateBook />,

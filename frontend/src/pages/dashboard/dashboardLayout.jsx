@@ -73,12 +73,12 @@ const DashBoardLayout = () => {
                 </span>
               </Link>
               <Link
-                to="/dashboard/manage-books"
+                to="/dashboard/manage-jobs"
                 className="inline-flex text-center gap-3 focus:bg-[#ecf3ff] dark:focus:bg-gray-800 focus:text-[#465fff] rounded-lg px-2 py-2  dark:focus:text-[#7592ff] hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 <MdOutlineManageHistory className="h-6 w-6" />
                 <span className="font-semibold dark:text-gray-50">
-                  Documents
+                  Manage Jobs
                 </span>
               </Link>
             </nav>
@@ -178,7 +178,7 @@ const DashBoardLayout = () => {
           </header>
 
           {/* Main  */}
-          <main className="p-6 sm:p-10 space-y-6 dark:bg-gray-900 dark:border-800">
+          <main className="p-6 sm:p-10 space-y-6 dark:bg-gray-900 dark:border-800 bg-[#f9fafb]">
             <Outlet />
           </main>
         </div>

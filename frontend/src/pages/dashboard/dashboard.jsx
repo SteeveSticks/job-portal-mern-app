@@ -80,10 +80,12 @@ const Dashboard = () => {
       </div>
       {/* Montly Item Ends */}
 
-      {/* Montly Sales Chart */}
+      {/* Montly Target Chart */}
       <div className="col-span-1 sm:col-span-2 lg:col-span-3">
         <MonthlyTarget />
       </div>
+
+      {/* Montly Sales Chart */}
     </div>
   );
 };

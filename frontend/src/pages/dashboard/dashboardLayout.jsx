@@ -22,7 +22,7 @@ const DashBoardLayout = () => {
             <img
               src="/logo.png"
               alt="logo"
-              className="object-contain w-full h-10 "
+              className="object-contain w-full h-10 pl-2"
             />
             <h2 className="text-2xl font-medium text-gray-700 ml-3 dark:text-white transition">
               JobAdmin

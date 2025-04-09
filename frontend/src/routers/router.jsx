@@ -10,6 +10,7 @@ import AdminLogin from "../components/adminLogin";
 import PrivateRoute from "./privateRoute";
 import DashBoardLayout from "../pages/dashboard/dashboardLayout";
 import Dashboard from "../pages/dashboard/dashboard";
+import AdminRoute from "./adminRoute";
 
 const router = createBrowserRouter([
   {
@@ -53,16 +54,25 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/employer",
+    path: "/admin",
     element: <AdminLogin />,
   },
   {
     path: "/dashboard",
-    element: <DashBoardLayout />,
+    element: (
+      <AdminRoute>
+        <DashBoardLayout />
+      </AdminRoute>
+    ),
     children: [
       {
         path: "",
-        element: <Dashboard />,
+
+        element: (
+          <AdminRoute>
+            <Dashboard />
+          </AdminRoute>
+        ),
       },
       // {
       //   path: "add-new-job",

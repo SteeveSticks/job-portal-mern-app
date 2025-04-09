@@ -107,7 +107,7 @@ const DashBoardLayout = () => {
         {/* Main area */}
         <div className="flex-grow">
           {/* Navbar area  */}
-          <header className="sticky top-0 flex  w-full bg-white border-gray-200 z-99999 dark:border-gray-900 dark:bg-gray-900 lg:border-b justify-center items-center py-4 px-2">
+          <header className="sticky top-0 flex  w-full bg-white border-gray-200 z-99999 dark:border-gray-800 dark:bg-gray-900 lg:border-b justify-center items-center py-4 px-2">
             <button className="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
               <span className="sr-only">Menu</span>
               <svg
@@ -170,7 +170,7 @@ const DashBoardLayout = () => {
           </header>
 
           {/* Main  */}
-          <main className="p-6 sm:p-10 space-y-6">
+          <main className="p-6 sm:p-10 space-y-6 dark:bg-gray-900 dark:border-800">
             <Outlet />
           </main>
         </div>

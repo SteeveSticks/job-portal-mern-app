@@ -19,6 +19,8 @@
   --text-theme-sm--line-height: 20px;
   --text-theme-xs: 12px;
   --text-theme-xs--line-height: 18px;
+
+  --text-title-sm: 30px;
 }
 
 @utility custom-scrollbar {

@@ -9,6 +9,7 @@ import Form from "../pages/jobs/form";
 import AdminLogin from "../components/adminLogin";
 import PrivateRoute from "./privateRoute";
 import DashBoardLayout from "../pages/dashboard/dashboardLayout";
+import Dashboard from "../pages/dashboard/dashboard";
 
 const router = createBrowserRouter([
   {
@@ -63,18 +64,18 @@ const router = createBrowserRouter([
         path: "",
         element: <Dashboard />,
       },
-      {
-        path: "add-new-job",
-        element: <AddJob />,
-      },
-      {
-        path: "edit-job/:id",
-        element: <UpdateBook />,
-      },
-      {
-        path: "manage-jobs",
-        element: <ManageBooks />,
-      },
+      // {
+      //   path: "add-new-job",
+      //   element: <AddJob />,
+      // },
+      // {
+      //   path: "edit-job/:id",
+      //   element: <UpdateBook />,
+      // },
+      // {
+      //   path: "manage-jobs",
+      //   element: <ManageBooks />,
+      // },
     ],
   },
 ]);

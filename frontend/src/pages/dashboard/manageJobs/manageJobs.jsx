@@ -1,4 +1,4 @@
-import { data, Link, useNavigate } from "react-router-dom";
+import { data, Link, useNavigate, useParams } from "react-router-dom";
 import getBaseURL from "../../../utils/getBaseURL";
 import { useEffect, useState } from "react";
 
@@ -37,6 +37,28 @@ const ManageJobs = () => {
 
   // const [deleteBook] = useDeleteBookMutation();
 
+  const { id } = useParams();
+
+  const handleDeleteJob = async () => {
+    try {
+      const response = await fetch(`${getBaseURL()}/api/jobs/${id}`, {
+        method: "DELETE",
+      });
+
+      console.log(response);
+      const deleteData = await response.json();
+
+      if (!deleteData.ok)
+        throw new Error(deleteData.message || "Failed to delete job ");
+      console.log(deleteData);
+
+      alert("Job deleted succesfully");
+      setLoading(false);
+    } catch (error) {
+      console.log("Failed to delete a job :", error);
+      console.error(error);
+    }
+  };
   // Handle deleting a book
   // const handleDeleteBook = async (id) => {
   //   try {
@@ -54,9 +76,9 @@ const ManageJobs = () => {
     navigate(`dashboard/edit-book/${id}`);
   };
   return (
-    <section className="py-1 bg-blueGray-50">
+    <section className="py-1 bg-blueGray-50 ">
       <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
-        <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+        <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded dark:bg-gray-800 dark:text-white dark:border-gray-600">
           <div className="rounded-t mb-0 px-4 py-3 border-0">
             <div className="flex flex-wrap items-center">
               <div className="relative w-full px-4 max-w-full flex-grow flex-1">
@@ -75,7 +97,7 @@ const ManageJobs = () => {
             </div>
           </div>
 
-          <div className="block w-full overflow-x-auto">
+          <div className="block w-full overflow-x-auto dark:bg-gray-800 dark:text-white dark:border-gray-600">
             <table className="items-center bg-transparent w-full border-collapse ">
               <thead>
                 <tr>
@@ -115,12 +137,15 @@ const ManageJobs = () => {
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 space-x-4">
                         <Link
-                          to={`/dashboard/edit-book/${data._id}`}
+                          to={`/dashboard/edit-job/${data._id}`}
                           className="font-medium text-indigo-600 hover:text-indigo-700 mr-2 hover:underline underline-offset-2"
                         >
                           Edit
                         </Link>
-                        <button className="font-medium bg-red-500 py-1 px-4 rounded-full text-white mr-2">
+                        <button
+                          onClick={() => handleDeleteJob(data._id)}
+                          className=" gap-1 rounded-xl bg-[#fef3f2] text-[#d92d20] dark:bg-[#fef3f2]/10 dark:text-[#f04438] py-1 px-2"
+                        >
                           Delete
                         </button>
                       </td>

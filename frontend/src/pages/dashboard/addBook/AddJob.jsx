@@ -41,7 +41,7 @@ const AddJob = () => {
     }
   };
   return (
-    <div className="max-w-lg   mx-auto md:p-6 p-3 bg-white rounded-lg shadow-md dark:bg-gray-700">
+    <div className="max-w-lg   mx-auto md:p-6 p-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
       <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200 mb-4">
         Add New Job
       </h2>
@@ -64,7 +64,7 @@ const AddJob = () => {
         />
         {/* Cover Logo Upload */}
         <div className="mb-4">
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-gray-700 mb-2 dark:text-gray-200">
             CompanyLogo
           </label>
           <input
@@ -132,7 +132,7 @@ const AddJob = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full py-2 bg-green-500 text-white font-bold rounded-md"
+          className="w-full py-2 bg-gray-300 text-white font-bold rounded-md dark:bg-gray-500"
         >
           {isLoading ? (
             <span className="">Adding.. </span>

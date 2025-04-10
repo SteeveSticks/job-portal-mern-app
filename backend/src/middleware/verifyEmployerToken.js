@@ -2,18 +2,20 @@ const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET_KEY;
 
 const verifyEmployerToken = (req, res, next) => {
-  const token = req.headers["authorization"]?.split(" ")[1]; // extract the token from the header
+  const authHeader = req.headers.authorization;
 
-  if (!token) {
-    return res.status(401).json({ message: "Acess Denied. No token provided" });
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(403).json({ message: "No token provided" });
   }
 
+  const token = authHeader.split(" ")[1];
+
   try {
-    const employer = jwt.verify(token, JWT_SECRET);
-    req.user = employer;
+    const decoded = jwt.verify(token, JWT_SECRET);
+    req.user = decoded; //  make sure this is where you're attaching the user data
     next();
-  } catch (error) {
-    res.status(403).json({ message: "Invalid credentials" });
+  } catch (err) {
+    return res.status(403).json({ message: "Invalid token" });
   }
 };
 

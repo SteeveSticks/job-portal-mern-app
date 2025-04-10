@@ -2,37 +2,65 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import InputField from "./inputField";
+import getBaseURL from "../../../utils/getBaseURL";
 
 const AddJob = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [logoFile, setLogoFile] = useState(null);
   const [logoFileName, setLogoFileName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // const onSubmit = async (data) => {
-  //   const newBookData = {
-  //     ...data,
-  //     coverImage: logoFileName, // only file inside the asset can be inputed
-  //   };
-  //   try {
-  //     await addBook(newBookData).unwrap();
-  //     Swal.fire({
-  //       title: "New book Added1",
-  //       text: "Your new book has been added successfully",
-  //       icon: "success",
-  //       confirmButtonColor: "#3085d6",
-  //       confirmButtonText: "Yes, It's Okay!",
-  //     });
-  //     reset();
-  //     setimageFileName("");
-  //     setimageFile(null);
-  //   } catch (error) {
-  //     console.error(error);
-  //     alert("Failed to add book. Please try again.");
-  //   }
-  // };
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+    try {
+      const formData = new FormData();
 
-  // this function here handleFileChange is for uploading imageFile and imageFileName
+      // Append all text fields
+      for (const key in data) {
+        formData.append(key, data[key]);
+      }
+
+      // Append logo with the correct key name
+      if (logoFile) {
+        formData.append("companyLogo", logoFile); // Backend expects the name "companyLogo"
+      }
+
+      const token = localStorage.getItem("token");
+
+      console.log("Token:", localStorage.getItem("token"));
+
+      console.log("Form data going to the backend:", data);
+
+      if (!token) {
+        throw new Error("Access Denied! No token provided");
+      }
+
+      const response = await fetch(`${getBaseURL()}/api/jobs/create-job`, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Authorization: `Bearer ${token}`, // Only pass token, NOT Content-Type
+        },
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) throw new Error(result.message || "Failed to add job");
+
+      console.log(result);
+
+      reset();
+      setLogoFile(null);
+      setLogoFileName("");
+    } catch (error) {
+      console.log("Failed to add book :", error);
+      console.error(error);
+      alert("Failed to add book. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleFileChange = (e) => {
     const file = e.target.files[0]; // gets the file selected by the user
     if (file) {
@@ -47,7 +75,7 @@ const AddJob = () => {
       </h2>
 
       {/* Form starts here */}
-      <form onSubmit="" className="">
+      <form onSubmit={handleSubmit(onSubmit)} className="">
         {/* Reusable Input Field for CompanyName */}
         <InputField
           label="companyName"
@@ -70,7 +98,7 @@ const AddJob = () => {
           <input
             type="file"
             accept="image/*"
-            onChange={handleFileChange} // onChange works with useState(triggers when the user selects a file)
+            onChange={handleFileChange}
             className="mb-2 w-full dark:text-gray-200"
           />
           {logoFileName && (
@@ -80,7 +108,7 @@ const AddJob = () => {
         {/* Min Price */}
         <InputField
           label="MinPrice"
-          name="MinPrice"
+          name="minPrice"
           type="number"
           placeholder="Min Price"
           register={register}
@@ -88,14 +116,14 @@ const AddJob = () => {
         {/* Max Price */}
         <InputField
           label="MaxPrice"
-          name="  MaxPrice"
+          name="maxPrice"
           type="number"
           placeholder="MaxPrice"
           register={register}
         />
         <InputField
           label="JobLocation"
-          name="  jobLocation"
+          name="jobLocation"
           type="text"
           placeholder="Enter Job Location "
           register={register}
@@ -109,7 +137,7 @@ const AddJob = () => {
         />
         <InputField
           label="ExprienceLevel"
-          name="exprienceLevel"
+          name="experienceLevel"
           type="text"
           placeholder="Enter Expirence Level"
           register={register}

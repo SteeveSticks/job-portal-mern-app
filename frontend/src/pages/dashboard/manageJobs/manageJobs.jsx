@@ -1,6 +1,7 @@
 import { data, Link, useNavigate, useParams } from "react-router-dom";
 import getBaseURL from "../../../utils/getBaseURL";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const ManageJobs = () => {
   const navigate = useNavigate();
@@ -58,12 +59,14 @@ const ManageJobs = () => {
 
       console.log(deleteData);
 
-      localStorage.setItem("token");
-      alert("Job deleted succesfully");
-      setLoading(false);
+      toast.success("Job deleted succesfully");
+
+      // Update the UI : Update the frontend without needing to refetch all the jobs
+      setJobs(jobs.filter((job) => job._id !== id));
     } catch (error) {
       console.log("Failed to delete a job :", error);
       console.error(error);
+      toast.error("Failed to delete job!");
     }
   };
 

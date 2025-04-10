@@ -37,21 +37,28 @@ const ManageJobs = () => {
 
   // const [deleteBook] = useDeleteBookMutation();
 
-  const { id } = useParams();
-
-  const handleDeleteJob = async () => {
+  const handleDeleteJob = async (id) => {
     try {
+      const token = localStorage.getItem("token");
+
       const response = await fetch(`${getBaseURL()}/api/jobs/${id}`, {
         method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       console.log(response);
+
       const deleteData = await response.json();
 
-      if (!deleteData.ok)
+      if (!response.ok)
         throw new Error(deleteData.message || "Failed to delete job ");
+
       console.log(deleteData);
 
+      localStorage.setItem("token");
       alert("Job deleted succesfully");
       setLoading(false);
     } catch (error) {
@@ -59,6 +66,7 @@ const ManageJobs = () => {
       console.error(error);
     }
   };
+
   // Handle deleting a book
   // const handleDeleteBook = async (id) => {
   //   try {

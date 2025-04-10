@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import InputField from "./inputField";
 import getBaseURL from "../../../utils/getBaseURL";
+import toast from "react-hot-toast";
 
 const AddJob = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -27,10 +28,6 @@ const AddJob = () => {
 
       const token = localStorage.getItem("token");
 
-      console.log("Token:", localStorage.getItem("token"));
-
-      console.log("Form data going to the backend:", data);
-
       if (!token) {
         throw new Error("Access Denied! No token provided");
       }
@@ -49,13 +46,21 @@ const AddJob = () => {
 
       console.log(result);
 
+      Swal.fire({
+        title: "New Job Added",
+        text: "Your new Job has been added successfully",
+        icon: "success",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Yes, It's Okay!",
+      });
+
       reset();
       setLogoFile(null);
       setLogoFileName("");
     } catch (error) {
       console.log("Failed to add book :", error);
       console.error(error);
-      alert("Failed to add book. Please try again.");
+      toast.error("Failed to add book. Please try again.");
     } finally {
       setIsLoading(false);
     }

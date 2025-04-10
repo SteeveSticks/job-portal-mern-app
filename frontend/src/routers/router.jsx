@@ -12,6 +12,7 @@ import DashBoardLayout from "../pages/dashboard/dashboardLayout";
 import Dashboard from "../pages/dashboard/dashboard";
 import AdminRoute from "./adminRoute";
 import AddJob from "../pages/dashboard/addBook/AddJob";
+import ManageJobs from "../pages/dashboard/manageJobs/manageJobs";
 
 const router = createBrowserRouter([
   {
@@ -83,10 +84,10 @@ const router = createBrowserRouter([
       //   path: "edit-job/:id",
       //   element: <UpdateBook />,
       // },
-      // {
-      //   path: "manage-jobs",
-      //   element: <ManageBooks />,
-      // },
+      {
+        path: "manage-jobs",
+        element: <ManageJobs />,
+      },
     ],
   },
 ]);

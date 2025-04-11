@@ -5,96 +5,91 @@ import iphone from "../../assets/iphone-logo-company-2.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const company = () => {
+const Company = () => {
   return (
-    <div className="grid py-40 px-36">
-      <div className="w-full inline-block text-center ">
-        <h1 className="font-bold text-4xl text-black mb-12">
+    <div className="py-24 px-4 sm:px-10 lg:px-36 bg-white">
+      {/* Header */}
+      <div className="text-center mb-16">
+        <h1 className="font-bold text-3xl sm:text-4xl text-black mb-6">
           You're in good company
         </h1>
-        <p className="text-primary text-xl mb-12">
+        <p className="text-primary text-base sm:text-lg">
           Over 500,000 companies use StevHire to hire and get jobs. See why
-          these <br /> amazing companies use us as their platform to hire dream
-          talent.
+          these <br className="hidden sm:inline" /> amazing companies use us as
+          their platform to hire dream talent.
         </p>
       </div>
 
+      {/* Company testimonials */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 1,
-          ease: "easeOut",
-        }}
-        className="flex gap-5"
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
       >
-        <div className="border p-3 grid items-center justify-center text-center px-4 h-96 w-7/12 text-wrap rounded-lg shadow-md">
-          <div>
-            <img
-              src={macDonals}
-              alt="macDonals img"
-              className="w-[30%] h-[30%] object-cover overflow-hidden  inline-block"
-            />
-          </div>
-          <p className="text-start text-gray-500  text-base font-medium">
-            " Indeed helps the world’s largest family restaurant business to
-            recruit high quality candidates for its hard-to-fill positions. "
+        {/* MacDonalds */}
+        <div className="border p-6 flex flex-col items-center justify-center rounded-lg shadow-md bg-white sm:py-20">
+          <img
+            src={macDonals}
+            alt="MacDonalds"
+            className="w-20 h-20 object-contain mb-6"
+          />
+          <p className="text-gray-500 text-sm sm:text-base text-center">
+            "Indeed helps the world’s largest family restaurant business to
+            recruit high quality candidates for its hard-to-fill positions."
           </p>
         </div>
 
-        <div className="border p-3 grid items-center justify-center text-center px-4 h-96 w-7/12 text-wrap rounded-lg shadow-md">
-          <div>
-            <img
-              src={google}
-              alt="google img"
-              className="w-[30%] h-[30%] object-cover overflow-hidden  inline-block"
-            />
-          </div>
-          <p className="text-start text-gray-500  text-base font-medium">
+        {/* Google */}
+        <div className="border p-6 flex flex-col items-center justify-center rounded-lg shadow-md bg-white">
+          <img
+            src={google}
+            alt="Google"
+            className="w-20 h-20 object-contain mb-6"
+          />
+          <p className="text-gray-500 text-sm sm:text-base text-center">
             "This platform is redefining the way job seekers and employers
             connect—fast, efficient, and built for the future of work."
           </p>
         </div>
 
-        <div className="border p-3 grid items-center justify-center text-center px-4 h-96 w-7/12 text-wrap rounded-lg shadow-md">
-          <div>
-            <img
-              src={iphone}
-              alt="iphone img"
-              className="w-[50%] h-[50%] object-cover overflow-hidden  inline-block"
-            />
-          </div>
-          <p className="text-start text-gray-500  text-base font-medium">
+        {/* iPhone */}
+        <div className="border p-6 flex flex-col items-center justify-center rounded-lg shadow-md bg-white">
+          <img
+            src={iphone}
+            alt="iPhone"
+            className="w-24 h-24 object-contain mb-6"
+          />
+          <p className="text-gray-500 text-sm sm:text-base text-center">
             "Seamlessly designed and incredibly intuitive—this job portal makes
             finding the right opportunity as smooth as using an iPhone."
           </p>
         </div>
       </motion.div>
 
-      <div className="mt-40 flex flex-col items-center justify-center">
-        <h1 className="font-bold text-4xl text-primary mb-6">
+      {/* Call to Action */}
+      <div className="mt-20 flex flex-col items-center text-center">
+        <h1 className="font-bold text-3xl sm:text-4xl text-primary mb-5">
           Get started in minutes!
         </h1>
-        <div className="flex mb-1 gap-3">
+        <div className="flex flex-col sm:flex-row gap-3 mb-2">
           <Link
             to="/all-jobs"
-            className="px-3 py-2 text-white outline-none text-sm rounded bg-secondary hover:bg-[#5C93EE] "
+            className="px-4 py-2 text-white text-sm rounded bg-secondary hover:bg-[#5C93EE] transition"
           >
             Apply for Jobs
           </Link>
           <Link
             to="/log-in"
-            className="px-3 py-2 text-black bg-transparent border text-sm rounded"
+            className="px-4 py-2 text-sm text-black border border-gray-300 rounded hover:bg-gray-100 transition"
           >
             Post a Job
           </Link>
         </div>
-        <span className="text-base text-gray-400 mt-1">
-          StevHire (worldwide)
-        </span>
+        <span className="text-sm text-gray-400 mt-1">StevHire (worldwide)</span>
       </div>
     </div>
   );
 };
 
-export default company;
+export default Company;

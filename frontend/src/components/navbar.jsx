@@ -26,7 +26,7 @@ const Navbar = () => {
   // useLoaction to make the home text to when the route is home
   const location = useLocation();
   return (
-    <div className="flex justify-between items-center border bg-[#FFFFFF] p-3">
+    <div className="w-full flex justify-between items-center border bg-[#FFFFFF] p-3">
       <div className="flex ml-3 gap-3 justify-center items-center">
         <Link to="/">
           <img src={logoImg} alt="" className="w-8 h-8  " />

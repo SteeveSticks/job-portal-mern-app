@@ -108,13 +108,13 @@ const SingleJobPage = () => {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="max-w-lg shadow-md p-5 mt-24 rounded-sm">
+    <div className="flex items-center justify-center px-4 sm:px-6 md:px-8">
+      <div className="max-w-lg shadow-md p-5 mt-24 rounded-md w-full sm:p-6 md:p-8 ">
         <div className="flex items-center justify-center">
           <img
             src={`${getImgUrl(job?.companyLogo)}`}
             alt="jobLogo"
-            className="w-[50%] h-[30%] object-contain relative bottom-2 overflow-hidden"
+            className="w-[60%] sm:w-[50%] md:w-[40%] h-auto object-contain"
           />
         </div>
 
@@ -123,30 +123,30 @@ const SingleJobPage = () => {
             <span className="text-md font-bold">CompanyName: </span>
             {job?.companyName}
           </h3>
-          <div className="flex items-center gap-2 mb-3">
+          <div className="flex flex-wrap items-center gap-2 mb-4">
             <Link className="text-lg text-primary/80 font-bold hover:text-gray-600">
               {job.jobTitle}
             </Link>
-            <p className="bg-purple-200 text-purple-500 text-sm rounded-sm px-2">
+            <p className="bg-purple-200 text-purple-500 text-xs sm:text-sm rounded-sm px-2">
               New post
             </p>
           </div>
 
-          <div className="flex gap-3 mb-3">
+          <div className="flex flex-wrap gap-3 mb-3 text-sm text-gray-400">
             <div className="flex items-center gap-1">
-              <FiMapPin className="text-sm text-gray-400" />
-              <h5 className="text-sm text-gray-400">{job?.jobLocation}</h5>
+              <FiMapPin className="text-sm" />
+              <h5 className="text-sm">{job?.jobLocation}</h5>
             </div>
 
             <div className="flex items-center gap-1">
-              <CiClock2 className="text-sm text-gray-400 " />
-              <h5 className="text-sm text-gray-400 ">{job?.employmentType}</h5>
+              <CiClock2 className="text-sm" />
+              <h5 className="text-sm">{job?.employmentType}</h5>
             </div>
 
             <div className="flex items-center gap-1">
-              <BiDollar className="text-sm text-gray-400 " />
-              <div className="text-sm text-gray-400 ">{job?.minPrice} -</div>
-              <div className="text-sm text-gray-400 ">{job?.maxPrice}k</div>
+              <BiDollar className="text-sm" />
+              <div className="text-sm">{job?.minPrice} -</div>
+              <div className="text-sm">{job?.maxPrice}k</div>
             </div>
 
             <div className="flex items-center gap-1">
@@ -157,7 +157,9 @@ const SingleJobPage = () => {
             </div>
           </div>
 
-          <p className="text-sm text-gray-400 mt-6">{job.description}</p>
+          <p className="text-sm text-gray-600 mt-6 leading-relaxed">
+            {job.description}
+          </p>
 
           <div className="flex items-center justify-between mt-14 shadow-sm">
             <div className="py-1 px-1">
@@ -172,6 +174,7 @@ const SingleJobPage = () => {
                 id="resumeUpload"
                 accept=".pdf,.doc,.docx"
                 onChange={handleFileChange}
+                className="text-sm"
               />
               {resumeFileName && (
                 <p className="text-sm text-gray-500 mt-1">
@@ -184,7 +187,7 @@ const SingleJobPage = () => {
               <button
                 type="submit"
                 onClick={handleSubmit}
-                className="px-6 py-1.5 text-white outline-none text-sm rounded bg-secondary hover:bg-[#5C93EE] mr-5"
+                className="px-6 py-1.5 text-white outline-none text-sm rounded bg-secondary hover:bg-[#5C93EE] mr-5 transition duration-300"
               >
                 Apply
               </button>
@@ -197,6 +200,7 @@ const SingleJobPage = () => {
               id="terms"
               checked={isChecked}
               onChange={handleCheckBoxChange}
+              className="mt-1 sm:mt-0"
             />
             <label htmlFor="checkbox" className="text-sm text-primary ml-2">
               By applying you agree to the{" "}

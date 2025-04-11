@@ -11,8 +11,9 @@ import PrivateRoute from "./privateRoute";
 import DashBoardLayout from "../pages/dashboard/dashboardLayout";
 import Dashboard from "../pages/dashboard/dashboard";
 import AdminRoute from "./adminRoute";
-import AddJob from "../pages/dashboard/addBook/AddJob";
+import AddJob from "../pages/dashboard/addJob/AddJob";
 import ManageJobs from "../pages/dashboard/manageJobs/manageJobs";
+import UpdateJob from "../pages/dashboard/editBook/updateJob";
 
 const router = createBrowserRouter([
   {
@@ -80,10 +81,10 @@ const router = createBrowserRouter([
         path: "add-new-job",
         element: <AddJob />,
       },
-      // {
-      //   path: "edit-job/:id",
-      //   element: <UpdateBook />,
-      // },
+      {
+        path: "edit-job/:id",
+        element: <UpdateJob />,
+      },
       {
         path: "manage-jobs",
         element: <ManageJobs />,

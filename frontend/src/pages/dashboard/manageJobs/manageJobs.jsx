@@ -1,4 +1,4 @@
-import { data, Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import getBaseURL from "../../../utils/getBaseURL";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -36,8 +36,6 @@ const ManageJobs = () => {
     fetchAllJobs();
   }, []);
 
-  // const [deleteBook] = useDeleteBookMutation();
-
   const handleDeleteJob = async (id) => {
     try {
       const token = localStorage.getItem("token");
@@ -60,6 +58,7 @@ const ManageJobs = () => {
       console.log(deleteData);
 
       toast.success("Job deleted succesfully");
+      alert("job deleted succesfully");
 
       // Update the UI : Update the frontend without needing to refetch all the jobs
       setJobs(jobs.filter((job) => job._id !== id));
@@ -69,18 +68,6 @@ const ManageJobs = () => {
       toast.error("Failed to delete job!");
     }
   };
-
-  // Handle deleting a book
-  // const handleDeleteBook = async (id) => {
-  //   try {
-  //     await deleteBook(id).unwrap();
-  //     alert("Book deleted successfully!");
-  //     refetch();
-  //   } catch (error) {
-  //     console.error("Failed to delete book:", error.message);
-  //     alert("Failed to delete book. Please try again.");
-  //   }
-  // };
 
   // Handle navigating to Edit Book page
   const handleEditClick = (id) => {

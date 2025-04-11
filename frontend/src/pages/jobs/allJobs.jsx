@@ -34,7 +34,7 @@ const AllJobs = () => {
               onChange={handleInputChange}
               value={search}
               placeholder="What position are you looking for ?"
-              className="block flex-1 border-0 bg-transparent py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 outline-none"
+              className="block flex-1 border-0 bg-transparent py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 outline-none placeholder:text-[15.5px]"
             />
             <FiSearch className="absolute mt-2.5 ml-2 text-gray-400" />
           </div>
@@ -53,7 +53,7 @@ const AllJobs = () => {
 
           <button
             type="submit"
-            className="px-6 py-0 text-white outline-none text-sm rounded bg-secondary hover:bg-[#5C93EE] md:rounded-s-none"
+            className="px-6 md:py-0 text-white outline-none text-sm rounded bg-secondary hover:bg-[#5C93EE] md:rounded-s-none py-1"
           >
             Search
           </button>

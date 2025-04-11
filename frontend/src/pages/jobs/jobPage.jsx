@@ -62,33 +62,36 @@ const JobPage = ({ search, location }) => {
               whileTap={{ scale: 0.95 }} //shrink when clicked
               transition={{ duration: 0.6, ease: "easeOut" }}
               key={item._id || index}
-              className="flex w-full border gap-2 p-2  shadow-sm mt-24 rounded-sm"
+              className="flex w-full border md:p-2 shadow-sm mt-24 rounded-sm flex-col sm:flex-row gap-2 p-4"
             >
-              <div>
+              {/* Image */}
+              <div className="">
                 <img
                   src={`${getImgUrl(item.companyLogo)}`}
                   alt="jobLogos"
-                  className="w-[100%] h-[30%] object-contain relative bottom-2 overflow-hidden"
+                  className="w-[100%] sm:h-[30%] object-contain relative bottom-2 h-24"
                 />
               </div>
 
+              {/* Info section */}
               <div className="">
                 <h3 className="text-primary/80 text-sm mb-2">
                   {item.companyName}
                 </h3>
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-2 mb-2 flex-wrap">
                   <Link
                     to="/job/id"
                     className="text-lg text-primary/80 font-bold hover:text-gray-600"
                   >
                     {item.jobTitle}
                   </Link>
-                  <p className="bg-purple-200 text-purple-500 text-sm rounded-sm px-2">
+                  <p className="bg-purple-200 text-purple-500 text-xs rounded-sm px-2 py-0.5">
                     New post
                   </p>
                 </div>
 
-                <div className="flex gap-3 mb-2">
+                {/* Job Info */}
+                <div className="flex gap-3 mb-2 flex-wrap text-sm text-gray-500">
                   <div className="flex items-center gap-1">
                     <FiMapPin className="text-sm text-gray-400" />
                     <h5 className="text-sm text-gray-400">
@@ -121,12 +124,15 @@ const JobPage = ({ search, location }) => {
                   </div>
                 </div>
 
-                <p className="text-sm text-gray-400 mb-2">{item.description}</p>
+                {/* Description */}
+                <p className="text-sm text-gray-400 mb-4 line-clamp-3">
+                  {item.description}
+                </p>
 
-                <div className=" text-end mt-4">
+                <div className=" text-end">
                   <Link
                     to={`/job/${item._id}`}
-                    className="px-2 py-1 text-white outline-none text-sm rounded bg-secondary hover:bg-[#5C93EE] mr-5"
+                    className="px-3 py-1 text-white outline-none text-sm rounded bg-secondary hover:bg-[#5C93EE]"
                   >
                     Apply now!
                   </Link>
@@ -135,7 +141,7 @@ const JobPage = ({ search, location }) => {
             </motion.div>
           ))
         ) : (
-          <p className="text-gray-500 text-center col-span-2 mt-5">
+          <p className="text-gray-500 text-center col-span-full mt-5">
             No jobs found for "{search}" in "{location}"
           </p>
         )}

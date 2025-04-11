@@ -34,7 +34,7 @@ const AdminLogin = () => {
           navigate("/");
         }, 3600 * 1000); // after 1hr this token will expire
 
-        toast.success("Admin Login successfull!");
+        alert("Admin Login successfull!");
         navigate("/dashboard");
       } else {
         throw new Error("Token not found");

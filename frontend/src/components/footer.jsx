@@ -39,9 +39,9 @@ const footer = () => {
 
           <Link
             to="/sign-up"
-            className="px-2 py-1 text-white border text-sm rounded hover:text-gray-400"
+            className="px-1.5 py-1.5 text-white border text-sm rounded hover:text-gray-400"
           >
-            Sign up
+            Signup
           </Link>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import {} from "react";
+import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { HiViewGridAdd } from "react-icons/hi";
 import { MdOutlineManageHistory } from "react-icons/md";
@@ -9,12 +9,20 @@ import { RxDashboard } from "react-icons/rx";
 
 const DashBoardLayout = () => {
   // const handleLogout = () => {};
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  const toggleMoblieOpen = () => setIsMobileOpen((prev) => !prev);
+  const closeMobileSidebar = () => setIsMobileOpen(false);
 
   return (
     <div>
-      <section className="flex md:bg-gray-100 min-h-screen overflow-hidden">
+      <section className="flex md:bg-gray-100 min-h-screen overflow-hidde">
         {/* the tag aside is used for sidebars */}
-        <aside className="hidden sm:flex sm:flex-col shadow-sm border-b border-r border-l transition bg-white dark:bg-gray-900 dark:text-white dark:border-gray-800">
+        <aside
+          className={`fixed z-50 sm:flex sm:flex-col shadow-sm border-b border-r border-l transition bg-white dark:bg-gray-900 dark:text-white dark:border-gray-800 sm:relative sm:z-auto w-64  ${
+            isMobileOpen ? "translate-x-0" : "-translate-x-full"
+          } md:translate-x-0 mt-[75px] md:mt-0 ml-2  md:ml-0 rounded-md md:rounded-sm`}
+        >
           <a
             href="/"
             className="inline-flex items-center justify-center h-16 w-full px-4 pr-20 py-10"
@@ -31,6 +39,7 @@ const DashBoardLayout = () => {
           <span className="text-xs text-gray-400 dark:text-gray-400 px-4 pt-3 font-semibold">
             MENU
           </span>
+
           {/* folders */}
           <div className="flex-grow flex flex-col justify-between text-gray-500 dark:bg-gray-900 dark:border-gray-800">
             <nav className="flex flex-col mx-4 my-6 space-y-4">
@@ -54,17 +63,22 @@ const DashBoardLayout = () => {
                 </svg>
                 <span className="font-semibold dark:text-gray-50">Folders</span>
               </a>
+
               <Link
                 to="/dashboard"
-                className="inline-flex text-center gap-3 focus:bg-[#ecf3ff] dark:focus:bg-gray-800 focus:text-[#465fff] rounded-lg px-2 py-2  dark:focus:text-[#7592ff] hover:bg-gray-100 dark:hover:bg-gray-800"
+                onClick={closeMobileSidebar}
+                className="inline-flex text-center gap-3 focus:bg-[#ecf3ff] dark:focus:bg-gray-800 focus:text-   
+                [#465fff] rounded-lg px-2 py-2  dark:focus:text-[#7592ff] hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 <RxDashboard className="h-6 w-6" />
                 <span className="font-semibold dark:text-gray-50">
                   Dashboard
                 </span>
               </Link>
+
               <Link
                 to="/dashboard/add-new-job"
+                onClick={closeMobileSidebar}
                 className="inline-flex text-center gap-3 focus:bg-[#ecf3ff] dark:focus:bg-gray-800 focus:text-[#465fff] rounded-lg px-2 py-2  dark:focus:text-[#7592ff] hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 <HiViewGridAdd className="h-6 w-6" />
@@ -72,8 +86,10 @@ const DashBoardLayout = () => {
                   Add Jobs
                 </span>
               </Link>
+
               <Link
                 to="/dashboard/manage-jobs"
+                onClick={closeMobileSidebar}
                 className="inline-flex text-center gap-3 focus:bg-[#ecf3ff] dark:focus:bg-gray-800 focus:text-[#465fff] rounded-lg px-2 py-2  dark:focus:text-[#7592ff] hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 <MdOutlineManageHistory className="h-6 w-6" />
@@ -82,8 +98,12 @@ const DashBoardLayout = () => {
                 </span>
               </Link>
             </nav>
-            <div className="inline-flex items-center justify-center h-50 w-full border-t border-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 px-2 py-2 focus:bg-[#ecf3ff] dark:border-gray-800">
-              <button className="inline-flex text-center gap-3 dark:focus:bg-gray-800">
+
+            <div className="inline-flex items-center justify-center h-50 w-full border-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 px-2 py-2 focus:bg-[#ecf3ff] mt-40 sm:mt-0 dark:border-gray-800 border-t">
+              <button
+                className="inline-flex text-center gap-3 dark:focus:bg-gray-800"
+                onClick={toggleMoblieOpen}
+              >
                 <svg
                   aria-hidden="true"
                   fill="none"
@@ -104,10 +124,15 @@ const DashBoardLayout = () => {
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span className="font-semibold dark:text-gray-50">
+                <span className="block font-semibold dark:text-gray-50 mr-2">
                   Settings
                 </span>
               </button>
+            </div>
+            <div className=" inline-flex justify-center items-center ">
+              <span className="md:hidden block text-sm ml-2 mt-1">
+                @ 2025 JobAdmin
+              </span>
             </div>
           </div>
         </aside>
@@ -116,26 +141,48 @@ const DashBoardLayout = () => {
         <div className="flex-grow">
           {/* Navbar area  */}
           <header className="sticky top-0 flex  w-full bg-white border-gray-200 z-99999 dark:border-gray-800 dark:bg-gray-900 lg:border-b justify-center items-center py-4 px-2">
-            <button className="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
-              <span className="sr-only">Menu</span>
-              <svg
-                aria-hidden="true"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h7"
-                />
-              </svg>
+            <button
+              className="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full"
+              onClick={toggleMoblieOpen}
+            >
+              <span className="sr-only">Toggle Menu</span>
+              {isMobileOpen ? (
+                // Close icon (X)
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                // Hamburger menu
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h7"
+                  />
+                </svg>
+              )}
             </button>
 
-            {/* left side navbar */}
-            <div className="px-10 w-full max-w-md sm:-ml-2">
+            {/* Input */}
+            <div className="hidden md:block px-10 w-full max-w-md sm:-ml-2">
               <svg
                 width="20"
                 height="20"
@@ -151,6 +198,7 @@ const DashBoardLayout = () => {
                   fill=""
                 />
               </svg>
+
               <input
                 type="text"
                 role="search"
@@ -167,7 +215,7 @@ const DashBoardLayout = () => {
             </div>
 
             {/* right side navbar */}
-            <div className="flex flex-shrink-0 items-center ml-auto gap-3 px-3">
+            <div className="flex flex-shrink-0 items-center ml-auto gap-3 px-1">
               {/* Dark Mode Toggler */}
               <ThemeToggleButton />
               {/* Notification dropdown */}

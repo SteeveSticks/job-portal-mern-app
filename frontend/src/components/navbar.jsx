@@ -43,7 +43,7 @@ const Navbar = () => {
       <div className="inline-flex items-center justify-center">
         <Link
           to="/all-jobs"
-          className="text-base ml-10 text-gray-500  font-semibold hover:text-gray-400 underline underline-offset-4"
+          className="text-base md:hidden ml-10 text-gray-500  font-semibold hover:text-gray-400 underline underline-offset-4"
         >
           All Jobs
         </Link>

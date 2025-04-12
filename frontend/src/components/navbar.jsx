@@ -35,12 +35,12 @@ const Navbar = () => {
       <div className="flex md:ml-3 gap-3 justify-center items-center">
         {/* Logo */}
         <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
-          <img src={logoImg} alt="Logo" className="w-8 h-8 " />
+          <img src={logoImg} alt="Logo" className="w-8 h-8" />
         </Link>
         <h2 className="text-lg text-gray-500 font-semibold">StevHire</h2>
       </div>
 
-      <div className="inline-flex items-center justify-center">
+      <div className="md:hidden inline-flex items-center justify-center">
         <Link
           to="/all-jobs"
           className="text-base md:hidden ml-10 text-gray-500 hover:text-gray-400 underline underline-offset-4"
@@ -51,7 +51,7 @@ const Navbar = () => {
 
       {/* Desktop nav */}
       <div className="p-1">
-        <ul className="hidden md:grid md:grid-cols-3 mr-[130px] cursor-pointer text-center text-gray-500">
+        <ul className="hidden md:grid md:grid-cols-3 cursor-pointer text-center text-gray-500">
           <Link
             to="/"
             className={`ml-3 font-bold text-1xl hover:text-gray-400 ${

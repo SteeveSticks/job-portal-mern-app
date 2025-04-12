@@ -17,7 +17,7 @@ const Login = () => {
     try {
       await login(data.email, data.password);
       toast.success("Login successful 💜!");
-      navigate("/");
+      navigate("/all-jobs");
     } catch (error) {
       toast.error("Please provide a valid email and password");
       console.error(error);

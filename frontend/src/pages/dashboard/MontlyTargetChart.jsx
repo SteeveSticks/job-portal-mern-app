@@ -105,7 +105,7 @@ export function MonthlyTarget() {
             </div>
           </div>
 
-          <span className="absolute left-1/2 top-full -translate-x-1/2 -translate-y-[95%] rounded-full bg-success-50 px-3 py-1 text-xs font-medium  bg-[#ecfdf3] text-[#039855] dark:bg-[#ecfdf3]/10 dark:text-[#12b76a]">
+          <span className="absolute left-1/2 top-full -translate-x-1/2 -translate-y-[95%] rounded-full bg-success-50 px-3 py-1 text-xs font-medium  bg-[#ecfdf3] text-[#039855] dark:bg-[#ecfdf3]/10 dark:text-[#12b76a] mt-5 md:mt-0">
             +10%
           </span>
         </div>

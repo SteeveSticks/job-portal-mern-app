@@ -90,7 +90,7 @@ const Login = () => {
               </button>
             </div>
           </form>
-          <p className="align-baseline font-medium mt-4 text-sm">
+          <p className="align-baseline font-medium mt-4 text-sm text-gray-400">
             Haven&lsquo;t an account? Please
             <Link
               to="/sign-up"

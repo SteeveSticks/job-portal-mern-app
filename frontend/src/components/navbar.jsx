@@ -32,12 +32,21 @@ const Navbar = () => {
   return (
     <nav className="w-full z-40 md:z-0 shadow-sm fixed md:relative flex justify-between items-center border bg-[#FFFFFF] p-3">
       {/* <div className="max-w-7xl mx-auto flex items-center justify-between"></div> */}
-      <div className="flex ml-3 gap-3 justify-center items-center">
+      <div className="flex md:ml-3 gap-3 justify-center items-center">
         {/* Logo */}
         <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
           <img src={logoImg} alt="Logo" className="w-8 h-8  " />
         </Link>
         <h2 className="text-lg text-gray-500 font-semibold">StevHire</h2>
+      </div>
+
+      <div className="inline-flex items-center justify-center">
+        <Link
+          to="/all-jobs"
+          className="text-base ml-10 text-gray-500  font-semibold hover:text-gray-400 underline underline-offset-4"
+        >
+          All Jobs
+        </Link>
       </div>
 
       {/* Desktop nav */}
@@ -62,7 +71,6 @@ const Navbar = () => {
           </Link>
         </ul>
       </div>
-
       {/* Right side || Icons and Auth */}
       <div className="hidden md:flex gap-2 justify-center items-center">
         <div>
@@ -129,7 +137,6 @@ const Navbar = () => {
           )}
         </div>
       </div>
-
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="absolute top-16 left-0 w-full bg-white shadow-lg z-50 md:hidden p-4 space-y-4">

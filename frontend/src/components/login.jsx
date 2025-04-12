@@ -39,7 +39,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className="h-[calc(100vh-30px)] flex justify-center items-center">
+      <div className="h-[calc(100vh)] flex justify-center items-center">
         <div className="w-full max-w-sm mx-auto bg-white shadow-md px-8 pt-6 pb-8 mb-4">
           <h2 className="text-lg font-semibold mb-4">Please Login</h2>
 

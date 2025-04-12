@@ -30,12 +30,12 @@ const Navbar = () => {
   // useLoaction to make the home text to when the route is home
   const location = useLocation();
   return (
-    <nav className="w-full z-40 md:z-0 shadow-sm fixed md:relative flex justify-between items-center border bg-[#FFFFFF] p-3">
+    <nav className="w-full z-40 md:z-0 shadow-sm fixed md:relative flex justify-between items-center border bg-[#FFFFFF] p-3 ">
       {/* <div className="max-w-7xl mx-auto flex items-center justify-between"></div> */}
       <div className="flex md:ml-3 gap-3 justify-center items-center">
         {/* Logo */}
         <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
-          <img src={logoImg} alt="Logo" className="w-8 h-8  " />
+          <img src={logoImg} alt="Logo" className="w-8 h-8 " />
         </Link>
         <h2 className="text-lg text-gray-500 font-semibold">StevHire</h2>
       </div>
@@ -92,7 +92,7 @@ const Navbar = () => {
 
               {/* show dropdowns */}
               {isDropDownOpen && (
-                <div className="absolute right-[140px] mt-4 w-48 bg-white shadow-lg rounded z-40">
+                <div className="absolute right-[140px] mt-4 w-48 bg-white shadow-lg rounded z-50">
                   <ul className="py-2">
                     {navigation.map((item) => (
                       <li

@@ -30,7 +30,7 @@ const Navbar = () => {
   // useLoaction to make the home text to when the route is home
   const location = useLocation();
   return (
-    <nav className="w-full z-40 md:z-0 shadow-sm fixed md:relative flex justify-between items-center border bg-[#FFFFFF] p-3 ">
+    <nav className="w-full z-50 md:z-0 shadow-sm fixed md:relative flex justify-between items-center border bg-[#FFFFFF] p-3">
       {/* <div className="max-w-7xl mx-auto flex items-center justify-between"></div> */}
       <div className="flex md:ml-3 gap-3 justify-center items-center">
         {/* Logo */}
@@ -51,7 +51,7 @@ const Navbar = () => {
 
       {/* Desktop nav */}
       <div className="p-1">
-        <ul className="hidden md:grid md:grid-cols-3 cursor-pointer text-center text-gray-500">
+        <ul className="hidden md:grid md:grid-cols-3 mr-[130px] cursor-pointer text-center text-gray-500">
           <Link
             to="/"
             className={`ml-3 font-bold text-1xl hover:text-gray-400 ${
@@ -71,6 +71,7 @@ const Navbar = () => {
           </Link>
         </ul>
       </div>
+
       {/* Right side || Icons and Auth */}
       <div className="hidden md:flex gap-2 justify-center items-center">
         <div>
@@ -137,9 +138,10 @@ const Navbar = () => {
           )}
         </div>
       </div>
+
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="absolute top-16 left-0 w-full bg-white shadow-lg z-50 md:hidden p-4 space-y-4">
+        <div className="absolute top-16 left-0 w-full bg-white shadow-lg z-40 md:hidden p-4 space-y-4">
           {user ? (
             <div className="space-y-2">
               {navigation.map((item) => (
@@ -164,7 +166,11 @@ const Navbar = () => {
             <div className="space-y-2 ">
               <ul className="space-y-3 text-gray-300">
                 <li>
-                  <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link
+                    to="/"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-gray-600"
+                  >
                     Home
                   </Link>
                 </li>
@@ -172,6 +178,7 @@ const Navbar = () => {
                   <Link
                     to="/all-jobs"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-gray-600"
                   >
                     All Jobs
                   </Link>
@@ -180,12 +187,17 @@ const Navbar = () => {
                   <Link
                     to="/dashboard"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-gray-600"
                   >
                     Dashboard
                   </Link>
                 </li>
                 <li>
-                  <Link to="/form" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link
+                    to="/form"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-gray-600"
+                  >
                     Form Page
                   </Link>
                 </li>

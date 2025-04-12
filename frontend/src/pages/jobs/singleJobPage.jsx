@@ -161,7 +161,7 @@ const SingleJobPage = () => {
             {job.description}
           </p>
 
-          <div className="flex items-center justify-between mt-14 shadow-sm">
+          <div className="sm:flex items-center justify-between mt-14 shadow-sm">
             <div className="py-1 px-1">
               <label>
                 <p className="text-gray-500 mb-1">
@@ -183,11 +183,11 @@ const SingleJobPage = () => {
               )}
             </div>
 
-            <div className="">
+            <div className="items-end justify-end flex mt-4">
               <button
                 type="submit"
                 onClick={handleSubmit}
-                className="px-6 py-1.5 text-white outline-none text-sm rounded bg-secondary hover:bg-[#5C93EE] mr-5 transition duration-300"
+                className="px-6 py-1.5 text-white outline-none text-sm rounded bg-secondary hover:bg-[#5C93EE] mr-5 transition duration-300 "
               >
                 Apply
               </button>

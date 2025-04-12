@@ -56,7 +56,7 @@ export function NotificationDropdown() {
       <Dropdown
         isOpen={isOpen}
         onClose={closeDropdown}
-        className="absolute -right-[9.5rem] z-50 mt-4 w-[95vw] max-w-[360px] max-h-[90vh] flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900"
+        className="absolute -right-[10rem] z-50 mt-4 w-[95vw] max-w-[360px] max-h-[90vh] flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900"
       >
         <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 dark:border-gray-700">
           <h5 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
